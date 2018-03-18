@@ -1,0 +1,23 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build directories
+build/
+debug/
+dist/
+release/
+
+# Dependency directories
+node_modules/
+
+# Test output directories
+screenshots/
+reports/
