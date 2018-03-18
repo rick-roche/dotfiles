@@ -6,7 +6,7 @@
   ci = commit
   co = checkout
   cim = commit -m
-  l = git log --oneline --graph --decorate
+  l = log --oneline --graph --decorate
   lg = log -p
   ls = ls-files
   pom = push origin master
