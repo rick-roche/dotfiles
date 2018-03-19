@@ -21,3 +21,4 @@ node_modules/
 # Test output directories
 screenshots/
 reports/
+coverage/
