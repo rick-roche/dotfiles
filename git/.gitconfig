@@ -9,6 +9,7 @@
   l = log --oneline --graph --decorate
   lg = log -p
   ls = ls-files
+  ff = merge origin master
   pom = push origin master
   st = status
   unc = reset --soft HEAD^
