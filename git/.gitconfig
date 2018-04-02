@@ -11,6 +11,7 @@
   ls = ls-files
   ff = merge origin master
   pom = push origin master
+  pr = fetch --prune
   st = status
   unc = reset --soft HEAD^
   unstage = reset HEAD --
