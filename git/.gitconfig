@@ -43,5 +43,6 @@
   excludesfile = ~/.gitignore_global
   quotepath = false
   ignorecase = true
+
 [push]
   default = simple

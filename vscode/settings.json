@@ -1,7 +1,7 @@
 {
-    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
     "git.confirmSync": false,
     "window.zoomLevel": 0,
     "git.autofetch": true,
-    "window.menuBarVisibility": "default"
+    "window.menuBarVisibility": "default",
+    "html.format.wrapAttributes": "force-aligned",
 }

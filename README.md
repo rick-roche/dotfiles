@@ -1,6 +1,6 @@
 # My dotfiles
 
-Configuration files that I don't want to lose; currently not managed by any tool but are useful to me. I mainly use a Windows development machine with gitbash as my command line.
+Copied and modified from https://github.com/webpro/dotfiles
 
 ## Getting Started
 
