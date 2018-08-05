@@ -5,12 +5,19 @@ fi
 
 brew install nvm
 
-export DOTFILES_BREW_PREFIX_NVM=`brew --prefix nvm`
-set-config "DOTFILES_BREW_PREFIX_NVM" "$DOTFILES_BREW_PREFIX_NVM" "$DOTFILES_CACHE"
+mkdir -p ~/.nvm
 
-. "${DOTFILES_DIR}/system/.nvm"
-nvm install 8
-nvm alias default 8
+#export DOTFILES_BREW_PREFIX_NVM=`brew --prefix nvm`
+#set-config "DOTFILES_BREW_PREFIX_NVM" "$DOTFILES_BREW_PREFIX_NVM" "$DOTFILES_CACHE"
+
+#. "${DOTFILES_DIR}/system/.nvm"
+
+export NVM_DIR="$HOME/.nvm"
+. "$(brew --prefix nvm)/nvm.sh"
+
+nvm install --lts
+nvm use node
+nvm run node --version
 
 # Globally install with npm
 

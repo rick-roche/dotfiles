@@ -12,7 +12,6 @@ mas signin richard.j.roche@gmail.com
 # Amphetamine       937984704
 # AppCleaner        1013897218
 # EasyFind          411673888
-# Go2Shell          445770608 
 # OneDrive          823766827
 # Pocket            568494494
 # TextWrangler      404010395
@@ -26,7 +25,6 @@ apps=(
   937984704
   1013897218
   411673888
-  445770608
   823766827
   568494494
   404010395
