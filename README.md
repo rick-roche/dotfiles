@@ -1,6 +1,6 @@
 # My dotfiles
 
-Copied and modified from https://github.com/webpro/dotfiles
+These are my dotfiles, targetting macOS. Copied and modified from https://github.com/webpro/dotfiles.
 
 ## Getting Started
 
@@ -8,40 +8,49 @@ These instructions will assist in making use of my configurations.
 
 ### Prerequisites
 
-None yet. Hopefully these will be managed with a tool someday.
+On a sparkling fresh installation of macOS:
+
+```sh
+sudo softwareupdate -i -a
+xcode-select --install
+```
+
+Install the dotfiles with either Git or curl:
 
 ### Installing
 
 Clone the repo
 
-```
+```sh
 git clone https://github.com/rick-roche/dotfiles.git ~/.dotfiles
+source ~/.dotfiles/install.sh
 ```
 
-#### editorconfig
-* `.editorconfig` - place this file in the root of your project directory to have consistent formatting
+## The `dotfiles` command
 
-```sh
-cp ~/.dotfiles/editorconfig/.editorconfig .
-```
+    $ dotfiles help
+    Usage: dotfiles <command>
+    
+    Commands:
+       clean            Clean up caches (brew, npm)
+       dock             Apply macOS Dock settings
+       edit             Open dotfiles in IDE (code) and Git GUI (stree)
+       help             This help message
+       macos            Apply macOS system defaults
+       test             Run tests
+       update           Update packages and pkg managers (OS, brew, npm)
 
-#### git
-* `.gitconfig` - place this file in `~/.gitconfig` to replace your git settings. *Use your own name :)*
+## Customize/extend
 
-```sh
-cp ~/.dotfiles/git/.gitconfig ~/.gitconfig
-```
+You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from `.bash_profile` automatically. This file is in `.gitignore`.
 
-* `.gitignore` - place this file in the root of your project directory to ignore files I don't want in version control
+Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`.
 
-```sh
-cp ~/.dotfiles/git/.gitignore .
-```
-
-#### vscode
-* `settings.json` - to use my user settings, specifically for windows place in `%APPDATA%\Code\User\settings.json`
+* The runcom `.bash_profile` sources all `~/.extra/runcom/*.sh` files.
+* The installer (`install.sh`) will run `~/.extra/install.sh`.
 
 ## Acknowledgments
 
 * [Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.io)
+* [webpro's .files](https://github.com/webpro/dotfiles)
 * [Semantic Commit Messages](https://seesparkbox.com/foundry/semantic_commit_messages)

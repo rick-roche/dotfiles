@@ -17,8 +17,10 @@ if is-executable git -a -d "$DOTFILES_DIR/.git"; then git --work-tree="$DOTFILES
 
 # Bunch of symlinks
 
+ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
+ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
-# ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
+ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/config/.editorconfig" ~
 
 # Package managers & packages
@@ -28,6 +30,9 @@ ln -sfv "$DOTFILES_DIR/config/.editorconfig" ~
 . "$DOTFILES_DIR/install/bash.sh"
 . "$DOTFILES_DIR/install/brew-cask.sh"
 . "$DOTFILES_DIR/install/mas.sh"
+
+# VSCode
+. "$DOTFILES_DIR/vscode/install.sh"
 
 # Run tests
 
