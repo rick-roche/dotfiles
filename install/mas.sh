@@ -18,6 +18,7 @@ mas signin richard.j.roche@gmail.com
 # The Unarchiver    425424353
 # Wunderlist        410628904
 # Notability        736189492
+# Termius           1176074088
 
 apps=(
   497799835
@@ -32,6 +33,7 @@ apps=(
   425424353
   410628904
   736189492
+  1176074088
 )
 
 mas install "${apps[@]}"
