@@ -17,6 +17,7 @@ mas signin richard.j.roche@gmail.com
 # TextWrangler      404010395
 # The Unarchiver    425424353
 # Wunderlist        410628904
+# Notability        736189492
 
 apps=(
   497799835
@@ -30,6 +31,7 @@ apps=(
   404010395
   425424353
   410628904
+  736189492
 )
 
 mas install "${apps[@]}"
