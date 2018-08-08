@@ -1,4 +1,4 @@
-COMPUTER_NAME="Blade"
+# COMPUTER_NAME="Blade"
 
 osascript -e 'tell application "System Preferences" to quit'
 
@@ -54,7 +54,7 @@ defaults write com.apple.menuextra.battery ShowPercent YES
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
 # Disable the “Are you sure you want to open this application?” dialog
-defaults write com.apple.LaunchServices LSQuarantine -bool false
+# defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable Resume system-wide
 # defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
@@ -452,7 +452,7 @@ defaults write com.apple.ActivityMonitor SortDirection -int 0
 defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
 
 # Check for software updates daily, not just once per week
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+# defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
 # Download newly available updates in background
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
