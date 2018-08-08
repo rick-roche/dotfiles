@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cp settings.json $HOME/Library/Application Support/Code/User/settings.json
+cp settings.json "$HOME/Library/Application Support/Code/User/settings.json"
 
 code --install-extension Arjun.swagger-viewer
 code --install-extension bbenoist.vagrant
