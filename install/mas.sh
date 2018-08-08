@@ -19,6 +19,7 @@ mas signin richard.j.roche@gmail.com
 # Wunderlist        410628904
 # Notability        736189492
 # Termius           1176074088
+# Slack             803453959
 
 apps=(
   497799835
@@ -34,6 +35,7 @@ apps=(
   410628904
   736189492
   1176074088
+  803453959
 )
 
 mas install "${apps[@]}"
