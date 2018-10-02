@@ -23,6 +23,7 @@ apps=(
   visual-studio-code
   vlc
   virtualbox
+  minikube
 )
 
 brew cask install "${apps[@]}"

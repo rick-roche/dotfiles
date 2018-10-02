@@ -26,6 +26,7 @@ apps=(
   shellcheck
   unar
   wget
+  kubectl
 )
 
 brew install "${apps[@]}"
