@@ -27,6 +27,8 @@ apps=(
   unar
   wget
   kubectl
+  ansible
+  kubernetes-helm
 )
 
 brew install "${apps[@]}"
