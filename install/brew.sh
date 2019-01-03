@@ -12,13 +12,17 @@ brew upgrade
 # Install packages
 
 apps=(
+  ansible
   bash-completion2
   coreutils
   dockutil
   elixir
   fasd
+  go
   grep --with-default-names
   jq
+  kubectl
+  kubernetes-helm
   mackup
   mas
   postgresql
@@ -26,9 +30,6 @@ apps=(
   shellcheck
   unar
   wget
-  kubectl
-  ansible
-  kubernetes-helm
 )
 
 brew install "${apps[@]}"
