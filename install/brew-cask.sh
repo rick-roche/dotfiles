@@ -10,20 +10,27 @@ brew tap caskroom/fonts
 # Install packages
 
 apps=(
+  adoptopenjdk
   dash2
   dbeaver-community
   gitkraken
-  go2shell
   google-chrome
   google-chrome-canary
   iterm2
+  minikube
   postman
+  qlcolorcode
+  qlimagesize
+  qlstephen
+  qlvideo
+  qlmarkdown
+  quicklook-json
   spotify
+  suspicious-package
   vagrant
   visual-studio-code
   vlc
-  virtualbox
-  minikube
+  webpquicklook
 )
 
 brew cask install "${apps[@]}"
