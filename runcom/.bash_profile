@@ -59,3 +59,7 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
 # Export
 
 export DOTFILES_DIR DOTFILES_EXTRA_DIR
+
+# kubectl plugin manager
+# https://github.com/GoogleContainerTools/krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
