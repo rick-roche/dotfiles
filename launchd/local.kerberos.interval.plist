@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Label</key>
-        <string>local.kerberos</string>
+        <string>local.kerberos.interval</string>
         <key>ProgramArguments</key>
         <array>
             <string>bash</string>
@@ -11,6 +11,6 @@
             <string>~/.dotfiles/launchd/renew_kerberos_ticket.sh</string>
         </array>
         <key>StartInterval</key>
-        <integer>28800</integer>
+        <integer>7200</integer>
     </dict>
 </plist>
