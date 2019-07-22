@@ -41,6 +41,7 @@ apps=(
   jq
   k9s
   kube-score
+  kubectx
   kubernetes-cli
   kubernetes-helm
   libffi
