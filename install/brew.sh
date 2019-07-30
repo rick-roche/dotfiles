@@ -40,6 +40,7 @@ apps=(
   jpeg
   jq
   k9s
+  kube-ps1
   kube-score
   kubectx
   kubernetes-cli

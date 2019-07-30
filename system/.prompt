@@ -90,7 +90,8 @@ bash_prompt_command() {
     P_EXIT+="${P_RED}✘ "
   fi
 
-  PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
+  source /usr/local/Cellar/kube-ps1/0.7.0/share/kube-ps1.sh
+  PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} $(kube_ps1) ❯ ${P_RESET}"
 }
 
 parse_git_branch() {
