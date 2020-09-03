@@ -16,6 +16,7 @@ brew upgrade
 apps=(
   ansible
   awscli
+  azure-cli
   bash
   bash-completion@2
   coreutils
@@ -34,6 +35,7 @@ apps=(
   graphviz
   grep --with-default-names
   gts
+  helm@3
   highlight
   icu4c
   jasper
@@ -82,6 +84,7 @@ apps=(
   wget
   wxmac
   xz
+  yq
 )
 
 brew install "${apps[@]}"

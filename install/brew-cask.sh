@@ -19,6 +19,7 @@ apps=(
   iterm2
   minikube
   postman
+  powershell
   qlcolorcode
   qlimagesize
   qlstephen
