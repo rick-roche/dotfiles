@@ -1,1 +1,2 @@
-alias gitclean="git pr && git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d"
+alias gitclean="git pr && git branch --merged main | grep -v '^[ *]*main$' | xargs git branch -d"
+alias gitcleanmaster="git pr && git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d"

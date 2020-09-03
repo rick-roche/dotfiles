@@ -1,6 +1,6 @@
 [user]
-  name = Rick Roche
-  email = richard.j.roche@gmail.com
+	name = Rick Roche
+	email = richard.j.roche@gmail.com
 
 [alias]
   ci = commit
@@ -9,8 +9,8 @@
   l = log --oneline --graph --decorate
   lg = log -p
   ls = ls-files
-  ff = merge origin master
-  pom = push origin master
+  ff = merge origin main
+  ffold = merge origin master
   pr = fetch --prune
   st = status
   unc = reset --soft HEAD^
