@@ -2,6 +2,10 @@
 
 These are my dotfiles, targetting macOS. Copied and modified from https://github.com/webpro/dotfiles.
 
+## NB! REPO HAS MOVED
+
+My dotfiles have moved to https://gitlab.com/rick-roche/dotfiles; this repo has been archived.
+
 ## Getting Started
 
 These instructions will assist in making use of my configurations.
