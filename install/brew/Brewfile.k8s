@@ -1,0 +1,7 @@
+tap "kube-score/tap"
+brew "helm@2"
+brew "helm"
+brew "kube-ps1"
+brew "kube-score"
+brew "kubectx"
+brew "kubernetes-cli"

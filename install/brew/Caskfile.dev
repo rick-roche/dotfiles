@@ -1,0 +1,4 @@
+cask "dbeaver-community"
+cask "miro"
+cask "postman"
+cask "visual-studio-code"

@@ -1,0 +1,3 @@
+brew "azure-cli"
+brew "azure-functions-core-tools"
+brew "terraform"

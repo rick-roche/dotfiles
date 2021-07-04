@@ -1,0 +1,22 @@
+tap "homebrew/cask"
+tap "homebrew/cask-drivers"
+tap "homebrew/cask-fonts"
+tap "homebrew/cask-versions"
+
+cask "bitwarden"
+cask "gimp"
+cask "google-chrome"
+cask "iterm2"
+cask "microsoft-edge"
+cask "spotify"
+cask "vlc"
+
+# Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
+cask "qlcolorcode"
+cask "qlstephen"
+cask "qlmarkdown"
+cask "quicklook-json"
+cask "qlimagesize"
+cask "suspicious-package"
+cask "quicklookase"
+cask "qlvideo"

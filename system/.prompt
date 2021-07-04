@@ -90,12 +90,11 @@ bash_prompt_command() {
     P_EXIT+="${P_RED}✘ "
   fi
 
-  source /usr/local/Cellar/kube-ps1/0.7.0/share/kube-ps1.sh
-  PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} $(kube_ps1) ❯ ${P_RESET}"
+  PS1="${P_EXIT}${P_USER}${P_WHITE}@${P_HOST} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
 }
 
 parse_git_branch() {
-  local OUT=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
+  local OUT=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
   if [ "$OUT" != "" ]; then echo " $OUT"; fi
 }
 
