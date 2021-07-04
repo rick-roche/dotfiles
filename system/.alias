@@ -74,6 +74,7 @@ alias quit="exit"
 alias week="date +%V"
 alias speedtest="wget -O /dev/null http://speed.transip.nl/100mb.bin"
 alias grip="grip -b"
+alias chx="find . -name '*.sh' -exec chmod +x {} \;"
 
 # git
 alias gitclean="git fetch --prune && git for-each-ref --format '%(refname:short) %(upstream:track)' | grep '\[gone\]' | sed 's/\s.*$//' | xargs git branch -D"
