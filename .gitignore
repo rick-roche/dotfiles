@@ -1,4 +1,2 @@
-.cache.sh
-system/.custom
-*.keytab
-extension/
+Brewfile.lock.json
+modules/git/git
