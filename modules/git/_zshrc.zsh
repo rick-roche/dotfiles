@@ -1,0 +1,1 @@
+alias gitclean="git fetch --prune && git for-each-ref --format '%(refname:short) %(upstream:track)' | grep '\[gone\]' | sed 's/\s.*$//' | xargs git branch -D"

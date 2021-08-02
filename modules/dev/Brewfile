@@ -1,0 +1,9 @@
+tap "aquasecurity/trivy"
+
+brew "gitleaks"
+brew "hugo"
+brew "netlify-cli"
+brew "trivy"
+
+cask "postman"
+cask "visual-studio-code"
