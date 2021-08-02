@@ -1,0 +1,20 @@
+Usage: dotfiles command
+
+dotfiles supports the following commands:
+
+    info
+    
+        Displays the setup of the machine on which this command is run.  This is 
+        helpful in understanding the status of the setup and assist with 
+        debugging a damaged setup.
+
+    setup
+
+        Runs through the configuration and ensures that all modules are 
+        installed and configured.
+
+    cleanup
+
+        Runs through all of the possible modules and uninstalls them.  This is
+        useful in ensuring that packages installed through dotfiles but not 
+        needed are removed in a predictable way.

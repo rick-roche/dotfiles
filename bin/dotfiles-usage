@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+BASE_DIR=$(dirname $0)
+
+cat $BASE_DIR/dotfiles-usage.template

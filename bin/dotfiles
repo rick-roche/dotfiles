@@ -1,70 +1,41 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
-BIN_NAME=$(basename "$0")
-COMMAND_NAME=$1
-SUB_COMMAND_NAME=$2
+# Verbose levels:
+#   0: silent
+#   1: show info
+#   2: show debug info
+export DOTFILES_VERBOSE=1
 
-sub_help () {
-  echo "Usage: $BIN_NAME <command>"
-  echo
-  echo "Commands:"
-  echo "   clean            Clean up caches (brew, nvm, gem)"
-  echo "   dock             Apply macOS Dock settings"
-  echo "   edit             Open dotfiles in IDE ($DOTFILES_IDE) and Git GUI ($DOTFILES_GIT_GUI)"
-  echo "   help             This help message"
-  echo "   macos            Apply macOS system defaults"
-  echo "   test             Run tests"
-  echo "   update           Update packages and pkg managers (OS, brew, npm, gem)"
-}
+. $(dirname $0)/_bootstrap.zsh
 
-sub_edit () {
-  sh -c "$DOTFILES_IDE $DOTFILES_DIR"
-  sh -c "$DOTFILES_GIT_GUI $DOTFILES_DIR"
-}
+COMMAND=$1
 
-sub_test () {
-  bats "$DOTFILES_DIR"/test/*.bats
-}
-
-sub_update () {
-  sudo softwareupdate -i -a
-  brew update
-  brew upgrade
-  brew cleanup
-  npm install npm -g
-  npm update -g
-  gem update --system
-  gem update
-}
-
-sub_clean () {
-  brew cleanup
-  gem cleanup
-  . "$NVM_DIR/nvm.sh"; nvm cache clear
-}
-
-sub_macos () {
-  for DEFAULTS_FILE in "${DOTFILES_DIR}"/macos/defaults*.sh; do
-    echo "Applying ${DEFAULTS_FILE}" && . "${DEFAULTS_FILE}"
-  done
-  echo "Done. Some changes may require a logout/restart to take effect."
-}
-
-sub_dock () {
-  . "${DOTFILES_DIR}/macos/dock.sh" && echo "Dock reloaded."
-}
-
-case $COMMAND_NAME in
-  "" | "-h" | "--help")
-    sub_help
-    ;;
-  *)
+case "$COMMAND" in
+"cleanup")
     shift
-    sub_${COMMAND_NAME} $@
-    if [ $? = 127 ]; then
-      echo "'$COMMAND_NAME' is not a known command or has errors." >&2
-      sub_help
-      exit 1
-    fi
+    exec $(dirname $0)/dotfiles-cleanup $*
+    ;;
+"info")
+    shift
+    exec $(dirname $0)/dotfiles-info $*
+    ;;
+"setup")
+    shift
+    exec $(dirname $0)/dotfiles-setup $*
+    ;;
+"setup-name")
+    shift
+    exec $(dirname $0)/dotfiles-setup-name $*
+    ;;
+"update")
+    shift
+    exec $(dirname $0)/dotfiles-update $*
+    ;;
+"")
+    exec $(dirname $0)/dotfiles-usage
+    ;;
+*)
+    echo "Error: Unknown command: $COMMAND"
+    echo "Run $0 without any command to see dotfile's usage."
     ;;
 esac
