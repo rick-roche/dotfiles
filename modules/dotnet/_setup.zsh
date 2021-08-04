@@ -18,3 +18,5 @@ tools=('dotnet-outdated-tool' 'security-scan')
 for t in "${tools[@]}"; do
     "$HOME"/.dotnet/dotnet tool update --global "$t"
 done
+
+rm -rf "$DIR"/"$ms_script_name"
