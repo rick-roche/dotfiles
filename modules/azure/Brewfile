@@ -1,2 +1,4 @@
+tap "azure/functions"
+
 brew "azure-cli"
 brew "azure-functions-core-tools"
