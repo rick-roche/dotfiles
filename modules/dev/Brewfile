@@ -5,5 +5,6 @@ brew "hugo"
 brew "netlify-cli"
 brew "trivy"
 
+cask "github"
 cask "postman"
 cask "visual-studio-code"
