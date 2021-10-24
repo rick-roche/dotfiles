@@ -1,0 +1,3 @@
+cask "calibre"
+cask "send-to-kindle"
+cask "folx"
