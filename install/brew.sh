@@ -3,7 +3,7 @@
 #  return
 #fi
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # brew tap Goles/battery
 brew update
@@ -13,16 +13,16 @@ brew upgrade
 
 apps=(
   ansible
-  bash-completion2
+  bash-completion@2
   coreutils
   dockutil
   elixir
   fasd
   go
-  grep --with-default-names
+  grep 
   jq
   kubectl
-  kubernetes-helm
+  helm
   mackup
   mas
   postgresql
@@ -32,6 +32,7 @@ apps=(
   wget
 )
 
+echo "Installing ${apps[@]}"
 brew install "${apps[@]}"
 
 export DOTFILES_BREW_PREFIX_COREUTILS=`brew --prefix coreutils`

@@ -20,9 +20,11 @@ fi
 # Make utilities available
 
 PATH="$DOTFILES_DIR/bin:$PATH"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # Read cache
-
 DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 [ -f "$DOTFILES_CACHE" ] && . "$DOTFILES_CACHE"
 

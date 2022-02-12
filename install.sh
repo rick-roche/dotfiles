@@ -24,8 +24,8 @@ ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 ln -sfv "$DOTFILES_DIR/config/.editorconfig" ~
-ln -sfv "$DOTFILES_DIR/bin/connect_to_machines /usr/bin/
-ln -sfv "$DOTFILES_DIR/bin/.npmrc ~
+ln -sfv "$DOTFILES_DIR/bin/connect_to_machines" /usr/bin/
+ln -sfv "$DOTFILES_DIR/bin/.npmrc" ~
 
 # Package managers & packages
 echo "PAckagage Managers"

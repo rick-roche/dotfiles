@@ -3,9 +3,9 @@
 #  return
 #fi
 echo "Installing cask applications"
-brew tap caskroom/versions
-brew tap caskroom/cask
-brew tap caskroom/fonts
+brew tap homebrew/cask-versions 
+brew tap homebrew/cask
+brew tap homebrew/cask-fonts
 
 # Install packages
 
@@ -21,13 +21,13 @@ apps=(
   spotify
   vagrant
   vlc
-  minikube
   parallels
   parallels-toolbox
   whatsapp
+  intellij-idea
 )
 
-brew cask install "${apps[@]}"
+brew install --cask "${apps[@]}"
 
 # Quick Look Plugins (https://github.com/sindresorhus/quick-look-plugins)
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlimagesize webpquicklook suspicious-package qlvideo
