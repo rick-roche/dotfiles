@@ -1,0 +1,26 @@
+#!/bin/bash
+clear
+BOX=$1
+while true; do
+	read -p "Which environment [d] Dev, [t] Test, [s] Stage or [p] Prod?" envSelection
+	case $envSelection in 
+		[Dd]* ) ENV=a1; break;;
+		[Tt]* ) ENV=a2; break;;
+		[Ss]* ) ENV=a3; break;;
+		[Pp]* ) ENV=a4; break;;
+		* ) echo "Please answer d, t, s or p";;
+	esac
+done
+LOCATION=jhb;
+while true; do
+	read -p "Which Server do you want to connect to? [m] Maps or [j] Jhb?"  server
+	case $server in 
+		[Mm]* ) LOCATION=map; break;;
+		[Jj]* ) LOCATION=jhb; break;;
+		* ) echo "Please answer m or j";;
+	esac
+done
+SSH_LOCATION="pvb${LOCATION}vlwm${BOX}${ENV}" 
+echo ${SSH_LOCATION}
+sleep 2s
+ssh ${SSH_LOCATION}

@@ -1,3 +1,7 @@
 {
-  "sync.gist": "d555303821bf5202a26bfcc9c8cdfbc3"
+    "git.confirmSync": false,
+    "window.zoomLevel": 0,
+    "git.autofetch": true,
+    "window.menuBarVisibility": "default",
+    "html.format.wrapAttributes": "force-aligned",
 }

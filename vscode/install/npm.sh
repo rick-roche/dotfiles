@@ -26,7 +26,6 @@ packages=(
   nodemon
   npm
   nswag
-  @investec/invbuild
 )
 
 npm install -g "${packages[@]}"

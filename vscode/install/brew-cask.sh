@@ -2,7 +2,7 @@
 #  echo "Skipped: Homebrew-Cask"
 #  return
 #fi
-echo "Installing cask applications"
+
 brew tap caskroom/versions
 brew tap caskroom/cask
 brew tap caskroom/fonts
@@ -20,11 +20,10 @@ apps=(
   postman
   spotify
   vagrant
+  visual-studio-code
   vlc
+  virtualbox
   minikube
-  parallels
-  parallels-toolbox
-  whatsapp
 )
 
 brew cask install "${apps[@]}"

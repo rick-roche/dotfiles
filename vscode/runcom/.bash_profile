@@ -28,7 +28,7 @@ DOTFILES_CACHE="$DOTFILES_DIR/.cache.sh"
 
 # Finally we can source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,completion,grep,prompt,nvm,rvm,git_,custom}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,function_*,path,env,alias,completion,grep,prompt,nvm,rvm,git_,docker,custom}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
@@ -40,7 +40,7 @@ fi
 
 # Set LSCOLORS
 
-#eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
+eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
 
 # Hook for extra/custom stuff
 
@@ -59,18 +59,3 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE EXTRAFILE
 # Export
 
 export DOTFILES_DIR DOTFILES_EXTRA_DIR
-export DYLD_LIBRARY_PATH="/Users/burgert.vermeulen/Documents/libraries/instantclient_19_3_2"
-PATH="$DYLD_LIBRARY_PATH:$PATH"
-#export CI_JOB_TOKEN="UmzNoChmcrGBxCU8Ds3h"
-export ACCESS_TOKEN=UmzNoChmcrGBxCU8Ds3h
-export NODE_EXTRA_CA_CERTS=~/Documents/investec-certs/investec.pem
-export NODE_TLS_REJECT_UNAUTHORIZED="0"
-alias mws="connect_to_machines mws"
-alias esb="connect_to_machines esb"
-alias bpm="connect_to_machines bpm"
-alias um="connect_to_machines msg"
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-export NX_BRANCH='burtV_local'
-export NX_VERBOSE_LOGGING='false'
-export NODE_ENV='tst'
