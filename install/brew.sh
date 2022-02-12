@@ -12,6 +12,7 @@ brew upgrade
 # Install packages
 
 apps=(
+  minikube
   ansible
   bash-completion@2
   coreutils
