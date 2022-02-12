@@ -46,3 +46,11 @@ echo "PAckagage Managers"
  if [ -d "$DOTFILES_EXTRA_DIR" -a -f "$DOTFILES_EXTRA_DIR/install.sh" ]; then
    . "$DOTFILES_EXTRA_DIR/install.sh"
  fi
+
+# setup a few directories
+mkdir -p ~/git/apps/
+mkdir -p ~/git/components
+mkdir -p ~/git/monorepos
+mkdir -p ~/git/utils
+mkdir -p ~/git/apis
+mkdir -p ~/git/personal
