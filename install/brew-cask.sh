@@ -25,6 +25,7 @@ apps=(
   parallels-toolbox
   whatsapp
   intellij-idea
+  cleanmymac3
 )
 
 brew install --cask "${apps[@]}"
