@@ -1,6 +1,6 @@
 # My dotfiles
 
-These are my dotfiles, targetting macOS. Copied and modified from https://github.com/webpro/dotfiles.
+These are my dotfiles, targetting macOS, with the ability to setup any of my machines. The goal is to provide a repeatable, modular approach to setting up and maintaining a macOS installation with [zsh](https://www.zsh.org/) as the primary shell. In the past these dotfiles used [bash](https://www.gnu.org/software/bash/) as the primary shell.
 
 ## Installation
 
@@ -11,74 +11,59 @@ sudo softwareupdate -i -a
 xcode-select --install
 ```
 
-The Xcode Command Line Tools includes `git` and `make` (not available on stock macOS). Now there are two options:
+The Xcode Command Line Tools includes `git` and `make` (not available on stock macOS).
 
-1. Install this repo with `curl` available:
-
-```bash
-bash -c "`curl -fsSL https://raw.githubusercontent.com/rick-roche/dotfiles/main/remote-install.sh`"
-```
-
-This will clone or download, this repo to `~/.dotfiles` depending on the availability of `git`, `curl` or `wget`.
-
-1. Alternatively, clone manually into the desired location:
+Next clone this repo into the desired location:
 
 ```bash
 git clone https://github.com/rick-roche/dotfiles.git ~/.dotfiles
 ```
 
-Use the [Makefile](./Makefile) to install everything, and symlink [runcom](./runcom) and [config](./config) (using [stow](https://www.gnu.org/software/stow/)):
+### Personality
 
-Update the [`Makefile`](./Makefile) to customise what tooling and packages you want to install by updating the line below
+* Setup your computer name using `~/.dotfiles/bin/dotfiles-setup-name <computer name>`. E.g. `~/.dotfiles/bin/dotfiles-setup-name orko`
+* In `~/.dotfiles/settings/` create a personality file for the computer name using the convention `_<computer name>-setup.zsh`. E.g. `_orko-setup.zsh`
+* Define the modules you want to install in the setup E.g.
 
-```bash
-# Update this to reference the tooling you would like to include
-packages: dev-tooling azure-tooling docker-tooling dotnet-tooling golang-tooling k8s-tooling node-tooling node-packages
+```zsh
+. $DOTFILES_HOME/settings/_base-setup.zsh
+
+export DOTFILES_PERSONALITY=orko
+
+DOTFILES_MODULES+=(
+    aws
+    azure
+    dev
+    docker
+    dotnet
+    golang
+    java
+    node
+    media
+)
 ```
 
-You will also need to update the [.bash_profile](./runcom/.bash_profile) if you have not installed dotnet, golang, kubernetes or node tooling.
-```bash
-for DOTFILE in "$DOTFILES_DIR"/system/dev/.{dotnet,golang,gpg,kube,node}; do
-```
+### Setup
 
-```bash
-cd ~/.dotfiles
-make
-```
-
-The installation process in the Makefile is tested on every push and every week in this
-[GitHub Action](https://github.com/webpro/dotfiles/actions).
-
-## Post-Installation
-
-- `dotfiles dock` (set [Dock items](./macos/dock.sh))
-- `dotfiles macos` (set [macOS defaults](./macos/defaults.sh))
+Execute `~/.dotfiles/bin/dotfiles-setup` to run the initial setup of your machine using the defined personality.
 
 ## The `dotfiles` command
 
-```bash
-$ dotfiles help
-Usage: dotfiles <command>
+The dotfiles setup adds the `dotfiles` command to your path. Usage for the command can be seen by simply running `dotfiles` in your terminal.
 
-Commands:
-    clean            Clean up caches (brew, npm, gem, rvm)
-    dock             Apply macOS Dock settings
-    edit             Open dotfiles in IDE (code) and Git GUI (stree)
-    help             This help message
-    macos            Apply macOS system defaults
-    test             Run tests
-    update           Update packages and pkg managers (OS, brew, npm, gem)
-```
+- `dotfiles` - Print usage information
+- `dotfiles info` - Displays the setup of the machine on which this command is run
+- `dotfiles setup` - Use this to setup a new machine
+- `dotfiles update` - Use this to update all your modules
 
 ## Customise
 
-You can put your custom settings, such as Git credentials in the `system/.custom` file which will be sourced from
-`.bash_profile` automatically. This file is in `.gitignore`.
+TODO
 
-Alternatively, you can have an additional, personal dotfiles repo at `~/.extra`. The runcom `.bash_profile` sources all
-`~/.extra/runcom/*.sh` files.
 ## Acknowledgments
 
 * [Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.io)
+* [Conventional Commit Messages](https://www.conventionalcommits.org/)
+* [Graeme Lockleys' dotfiles](https://github.com/graeme-lockley/dotfiles)
+* [Oh My Zsh](https://ohmyz.sh/)
 * [webpro's .files](https://github.com/webpro/dotfiles)
-* [Semantic Commit Messages](https://seesparkbox.com/foundry/semantic_commit_messages)
