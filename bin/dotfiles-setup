@@ -4,6 +4,8 @@
 
 export DOTFILES_VERBOSE=1
 
+dotfiles_verify_settings
+
 for module in $DOTFILES_MODULES; do
     EXEC_FILE_NAME="$DOTFILES_HOME/modules/$module/_setup.zsh"
     if [[ -x "$EXEC_FILE_NAME" ]]; then
