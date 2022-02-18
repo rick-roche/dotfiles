@@ -1,6 +1,7 @@
 tap "homebrew/bundle"
 tap "homebrew/core"
 
+brew "bash"
 brew "coreutils"
 brew "diff-so-fancy"
 brew "dockutil"
