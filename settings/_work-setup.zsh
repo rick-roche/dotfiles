@@ -10,5 +10,5 @@ export DOTFILES_MODULES=(
     gpg
     java
     node
-    # work
+    work
 )
