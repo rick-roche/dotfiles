@@ -6,6 +6,13 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # brew tap Goles/battery
+tapApps=(
+  hashicorp/tap
+)
+echo "brew tap "${tapApps[@]}""
+brew tap "${tapApps[@]}"
+
+
 brew update
 brew upgrade
 
@@ -31,6 +38,7 @@ apps=(
   shellcheck
   unar
   wget
+  hashicorp/tap/terraform
 )
 
 echo "Installing ${apps[@]}"
