@@ -5,3 +5,5 @@ DIR=$(dirname "$0")
 
 logging_info "Bundle $DIR/Brewfile"
 brew bundle --file=$DIR/Brewfile
+
+mkdir -p ~/.kube
