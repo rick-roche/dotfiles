@@ -3,7 +3,7 @@ if ! is-macos -o ! is-executable brew; then
   return
 fi
 
-mas signin richard.j.roche@gmail.com
+mas signi burt@rumskey.co.za
 
 # Install packages
 # Xcode             497799835
