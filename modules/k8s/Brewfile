@@ -5,4 +5,4 @@ brew "kube-score"
 brew "kubectx"
 brew "kubernetes-cli"
 
-cask "lens"
+cask "lens", args: { appdir: "~/Applications" }

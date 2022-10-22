@@ -1,4 +1,5 @@
 #!/bin/zsh
+# Ref: https://gist.github.com/troyfontaine/18c9146295168ee9ca2b30c00bd1b41e
 
 DIR=$(dirname "$0")
 . $DOTFILES_HOME/bin/_bootstrap.zsh

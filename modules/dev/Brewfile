@@ -5,6 +5,9 @@ brew "hugo"
 brew "netlify-cli"
 brew "trivy"
 
+brew "markdownlint-cli"
+brew "shellcheck"
+
 cask "github"
 cask "postman"
 cask "visual-studio-code"

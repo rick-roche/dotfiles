@@ -28,8 +28,8 @@ DOTFILES_SETTINGS_MODE="custom"
 if [[ ! -r "$DOTFILES_SETTINGS_FILE_NAME" ]]; then
     logging_debug "Not found: $DOTFILES_SETTINGS_FILE_NAME"
 
-    DOTFILES_SETTINGS_FILE_NAME="$DOTFILES_HOME/settings/_${PERSONALITY}-setup.zsh"
-    DOTFILES_SETTINGS_MODE="personality"
+    DOTFILES_SETTINGS_FILE_NAME="$DOTFILES_HOME/settings/_${DEFAULT_PERSONALITY}-setup.zsh"
+    DOTFILES_SETTINGS_MODE="custom"
 
     if [[ ! -r "$DOTFILES_SETTINGS_FILE_NAME" ]]; then
         logging_debug "Not found: $DOTFILES_SETTINGS_FILE_NAME"

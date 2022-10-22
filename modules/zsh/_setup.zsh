@@ -10,6 +10,9 @@ else
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+logging_info "Bundle $DIR/Brewfile"
+brew bundle --file=$DIR/Brewfile
+
 # Install fonts
 curl -o "$HOME/Library/Fonts/MesloLGS NF Regular.ttf" -fsSL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
 curl -o "$HOME/Library/Fonts/MesloLGS NF Bold.ttf" -fsSL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
