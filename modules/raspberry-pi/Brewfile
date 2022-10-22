@@ -1,0 +1,2 @@
+cask "raspberry-pi-imager"
+cask "vnc-viewer"
