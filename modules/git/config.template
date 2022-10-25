@@ -60,7 +60,7 @@
     cmd = opendiff \"$LOCAL\" \"$REMOTE\" -merge \"$MERGED\" | cat
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 
 [merge]
 	tool = Kaleidoscope
@@ -100,6 +100,8 @@
 	gpgSign = true
 [tag]
 	gpgSign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
 
 # Setup work email to be used for work folder
 # [user]
