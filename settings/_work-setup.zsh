@@ -10,5 +10,8 @@ export DOTFILES_MODULES=(
     gpg
     java
     node
+    k8s
+    aws
+    python
     work
 )
