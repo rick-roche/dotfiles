@@ -1,0 +1,1 @@
+. $ZSH/tools/upgrade.sh

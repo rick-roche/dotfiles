@@ -1,0 +1,115 @@
+[user]
+	name = Richard Roché
+	email = EMAILADDRESS
+	signingkey = GPGKEY
+
+[core]
+	excludesfile = ~/.config/git/ignore
+	editor = vim
+	filemode = false
+	trustctime = false
+	autocrlf = input
+	untrackedCache = true
+	pager = diff-so-fancy | less --tabs=4 -RFX
+	ignorecase = false
+
+[credential]
+	helper = osxkeychain
+
+[grep]
+	lineNumber = true
+
+[help]
+	autocorrect = 1
+
+[push]
+	default = simple
+	followTags = true
+
+[fetch]
+	prune = true
+
+[alias]
+	amend = commit --amend --reuse-message=HEAD
+	br = branch
+	ci = commit
+	co = checkout
+	contrib = shortlog --summary --numbered
+	cr = clone --recursive
+	df = diff --word-diff
+    ff = merge origin main
+	ff-dev = merge origin develop
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ld = "!sh -c \"git log --since '${1:-1} days ago' --oneline --author $(git config user.email)\" -"
+	lg = log -p
+	ll = log --pretty=oneline --graph --abbrev-commit
+	lm = log --pretty=format:'* %s (%h)'
+	patch = !git --no-pager diff --no-color
+	p = push
+	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
+	st = status
+	sts = status -sb
+	unstage = reset --hard HEAD
+
+[diff]
+	renames = copies
+	indentHeuristic = true
+	tool = opendiff
+[difftool]
+	prompt = false
+[difftool "opendiff"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\" -merge \"$MERGED\" | cat
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path =
+
+[merge]
+	tool = Kaleidoscope
+	conflictstyle = diff3
+	defaultToUpstream = true
+[mergetool]
+	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
+
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main
+[commit]
+	gpgSign = true
+[tag]
+	gpgSign = true
+[gpg]
+	program = /opt/homebrew/bin/gpg
+
+# Setup work email to be used for work folder
+# [user]
+# 	email = work.name@company.com
+# [commit]
+# 	gpgSign = true
+# [tag]
+# 	gpgSign = true
+[includeIf "gitdir:~/code/work/"]
+    path = ~/code/work/.gitconfig

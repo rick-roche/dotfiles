@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+. $(dirname $0)/_bootstrap.zsh
+
+for module in $DOTFILES_MODULES; do
+    EXEC_FILE_NAME="$DOTFILES_HOME/modules/$module/_cleanup.zsh"
+    if [[ -x "$EXEC_FILE_NAME" ]]; then
+        logging_info "Running $EXEC_FILE_NAME"
+        source $EXEC_FILE_NAME
+    elif [[ -e "$EXEC_FILE_NAME" ]]; then
+        logging_status "$module: $EXEC_FILE_NAME exists but is not executable"
+    else
+        logging_info "$module: $EXEC_FILE_NAME does not exists"
+    fi
+done

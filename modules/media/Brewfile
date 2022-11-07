@@ -1,0 +1,4 @@
+cask "calibre"
+cask "send-to-kindle"
+cask "sonos"
+cask "transmission"

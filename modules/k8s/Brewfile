@@ -1,0 +1,8 @@
+tap "kube-score/tap"
+
+brew "helm"
+brew "kube-score"
+brew "kubectx"
+brew "kubernetes-cli"
+
+cask "lens", args: { appdir: "~/Applications" }

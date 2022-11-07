@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+. $(dirname $0)/_bootstrap.zsh
+
+export DOTFILES_VERBOSE=1
+
+dotfiles_verify_settings
+
+logging_info "Removing formulas"
+brew uninstall --force $(brew list --formula)
+
+logging_info "Removing casks"
+brew uninstall --force $(brew list --casks)
+
+logging_info "Homebrew cleanup"
+brew cleanup -s

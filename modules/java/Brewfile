@@ -1,0 +1,4 @@
+tap "spring-io/tap"
+
+brew "maven"
+brew "spring-boot"
