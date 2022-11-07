@@ -1,1 +1,4 @@
+tap "aws/tap"
+
 brew "awscli"
+brew "aws-sam-cli"
