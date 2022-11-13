@@ -7,14 +7,14 @@ export DOTFILES_VERBOSE=1
 dotfiles_verify_settings
 
 for module in $DOTFILES_MODULES; do
-    EXEC_FILE_NAME="$DOTFILES_HOME/modules/$module/_setup.zsh"
-    if [[ -x "$EXEC_FILE_NAME" ]]; then
-        logging_info "Running $EXEC_FILE_NAME"
-        source $EXEC_FILE_NAME
-    elif [[ -e "$EXEC_FILE_NAME" ]]; then
-        logging_status "$module: $EXEC_FILE_NAME exists but is not executable"
+    exec_file_name="$DOTFILES_HOME/modules/$module/_setup.zsh"
+    if [[ -x "$exec_file_name" ]]; then
+        logging_info "Running $exec_file_name"
+        source $exec_file_name
+    elif [[ -e "$exec_file_name" ]]; then
+        logging_status "$module: $exec_file_name exists but is not executable"
     else
-        logging_info "$module: $EXEC_FILE_NAME does not exists"
+        module_brew_bundle $module
     fi
 done
 

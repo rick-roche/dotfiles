@@ -2,6 +2,8 @@ export DOTFILES_HOME=$HOME/.dotfiles
 export XDG_CONFIG_HOME="$HOME/.config"
 export DEFAULT_PERSONALITY=base
 
+source "$DOTFILES_HOME/bin/_functions.zsh"
+
 function logging_debug() {
     if [[ "$DOTFILES_VERBOSE" -eq "2" ]]; then
         echo "Debug: $*"
