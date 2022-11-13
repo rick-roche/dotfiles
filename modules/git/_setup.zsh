@@ -13,8 +13,4 @@ cp $DIR/ignore $DIR/git/ignore
 mkdir -p $XDG_CONFIG_HOME
 ln -s -f $DIR/git $XDG_CONFIG_HOME
 
-logging_info "Bundle $DIR/Brewfile"
-brew bundle --file=$DIR/Brewfile
-
-
-
+module_brew_bundle $(basename $DIR)

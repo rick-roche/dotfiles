@@ -3,12 +3,9 @@
 DIR=$(dirname "$0")
 . $DOTFILES_HOME/bin/_bootstrap.zsh
 
-# logging_info "Bundle $DIR/Brewfile"
-# brew bundle --file=$DIR/Brewfile
-
 NVM_DIR=$HOME/.nvm
 
-if ! [ -d $NVM_DIR/.git ]; then 
+if ! [ -d $NVM_DIR/.git ]; then
     git clone https://github.com/creationix/nvm.git $NVM_DIR;
 fi
 
