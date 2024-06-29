@@ -1,4 +1,5 @@
 #!/bin/zsh
+# shellcheck shell=bash
 
 ################################################################################
 # Function: brew_bundle
@@ -13,7 +14,7 @@
 brew_bundle() {
     local path_to_bundle=$1
     logging_info "Bundle $path_to_bundle"
-    brew bundle --file=$path_to_bundle
+    brew bundle --file="$path_to_bundle"
 }
 
 ################################################################################
@@ -27,9 +28,10 @@ brew_bundle() {
 # 	0 if success, non-zero otherwise.
 ################################################################################
 module_brew_bundle() {
-    . $DOTFILES_HOME/bin/_bootstrap.zsh
+    # shellcheck source=/dev/null
+    . "$DOTFILES_HOME/bin/_bootstrap.zsh"
 
     local module="$1"
     bundle_file_name="$DOTFILES_HOME/modules/$module/Brewfile"
-    brew_bundle $bundle_file_name
+    brew_bundle "$bundle_file_name"
 }

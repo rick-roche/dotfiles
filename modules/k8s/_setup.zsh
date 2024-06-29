@@ -1,8 +1,10 @@
 #!/bin/zsh
+# shellcheck shell=bash
 
 DIR=$(dirname "$0")
-. $DOTFILES_HOME/bin/_bootstrap.zsh
+# shellcheck source=/dev/null
+. "$DOTFILES_HOME/bin/_bootstrap.zsh"
 
-module_brew_bundle $(basename $DIR)
+module_brew_bundle "$(basename "$DIR")"
 
 mkdir -p ~/.kube

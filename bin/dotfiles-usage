@@ -1,5 +1,6 @@
 #!/bin/zsh
+# shellcheck shell=bash
 
-BASE_DIR=$(dirname $0)
+BASE_DIR=$(dirname "$0")
 
-cat $BASE_DIR/dotfiles-usage.template
+cat "$BASE_DIR/dotfiles-usage.template"

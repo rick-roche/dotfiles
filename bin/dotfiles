@@ -1,4 +1,5 @@
 #!/bin/zsh
+# shellcheck shell=bash
 
 # Verbose levels:
 #   0: silent
@@ -6,33 +7,34 @@
 #   2: show debug info
 export DOTFILES_VERBOSE=1
 
-. $(dirname $0)/_bootstrap.zsh
+# shellcheck source=/dev/null
+. "$(dirname $0)/_bootstrap.zsh"
 
 COMMAND=$1
 
 case "$COMMAND" in
 "cleanup")
     shift
-    exec $(dirname $0)/dotfiles-cleanup $*
+    exec "$(dirname $0)/dotfiles-cleanup" "$@"
     ;;
 "info")
     shift
-    exec $(dirname $0)/dotfiles-info $*
+    exec "$(dirname $0)/dotfiles-info" "$@"
     ;;
 "setup")
     shift
-    exec $(dirname $0)/dotfiles-setup $*
+    exec "$(dirname $0)/dotfiles-setup" "$@"
     ;;
 "setup-name")
     shift
-    exec $(dirname $0)/dotfiles-setup-name $*
+    exec "$(dirname $0)/dotfiles-setup-name" "$@"
     ;;
 "update")
     shift
-    exec $(dirname $0)/dotfiles-update $*
+    exec "$(dirname $0)/dotfiles-update" "$@"
     ;;
 "")
-    exec $(dirname $0)/dotfiles-usage
+    exec "$(dirname $0)/dotfiles-usage"
     ;;
 *)
     echo "Error: Unknown command: $COMMAND"

@@ -1,16 +1,18 @@
 #!/bin/zsh
+# shellcheck shell=bash
 
-. $DOTFILES_HOME/bin/_bootstrap.zsh
+# shellcheck source=/dev/null
+. "$DOTFILES_HOME/bin/_bootstrap.zsh"
 DIR=$(dirname "$0")
 
 # Install oh-my-zsh
 if [ -d "$ZSH" ]; then
-    $ZSH/tools/upgrade.sh
+    "$ZSH"/tools/upgrade.sh
 else
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-module_brew_bundle $(basename $DIR)
+module_brew_bundle "$(basename "$DIR")"
 
 # Install fonts
 curl -o "$HOME/Library/Fonts/MesloLGS NF Regular.ttf" -fsSL https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
@@ -20,6 +22,5 @@ curl -o "$HOME/Library/Fonts/MesloLGS NF Bold Italic.ttf" -fsSL https://github.c
 
 # Link
 rm -rf ~/.zshrc ~/.zprofile
-stow -R -d $DIR -t $HOME runcom
+stow -R -d "$DIR" -t "$HOME" runcom
 # ln -s -f $DOTFILES_HOME/modules/zsh/.zshrc ~/.zshrc
-
