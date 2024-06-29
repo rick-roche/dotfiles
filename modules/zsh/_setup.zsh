@@ -7,7 +7,7 @@ DIR=$(dirname "$0")
 
 # Install oh-my-zsh
 if [ -d "$ZSH" ]; then
-    $ZSH/tools/upgrade.sh
+    "$ZSH"/tools/upgrade.sh
 else
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
@@ -22,5 +22,5 @@ curl -o "$HOME/Library/Fonts/MesloLGS NF Bold Italic.ttf" -fsSL https://github.c
 
 # Link
 rm -rf ~/.zshrc ~/.zprofile
-stow -R -d $DIR -t $HOME runcom
+stow -R -d "$DIR" -t "$HOME" runcom
 # ln -s -f $DOTFILES_HOME/modules/zsh/.zshrc ~/.zshrc

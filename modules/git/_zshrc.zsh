@@ -31,10 +31,10 @@ function easy_clone() {
     local project_path=$(echo "$url" | sed -n 's#https://\(.*\)/.*#\1#p')
     local dest="$CODE_DEST/$project_path"
 
-    clone_repo $url $dest
+    clone_repo "$url" "$dest"
 
     # shellcheck disable=SC2155
-    local repo_name=$(basename $url)
+    local repo_name=$(basename "$url")
     # shellcheck disable=SC2164
     cd "$dest/${repo_name%.*}"
 }

@@ -1,3 +1,6 @@
+#!/bin/zsh
+# shellcheck shell=bash
+
 osascript -e 'tell application "System Preferences" to quit'
 
 # Ask for the administrator password upfront
