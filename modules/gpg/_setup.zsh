@@ -9,7 +9,7 @@ DIR=$(dirname "$0")
 module_brew_bundle "$(basename "$DIR")"
 
 # Link the config
-mkdir -p $HOME/.gnupg/
-ln -s -f $DIR/gpg.conf $HOME/.gnupg/gpg.conf
-ln -s -f $DIR/gpg-agent.conf $HOME/.gnupg/gpg-agent.conf
+mkdir -p "$HOME/.gnupg/"
+ln -s -f "$DIR/gpg.conf" "$HOME/.gnupg/gpg.conf"
+ln -s -f "$DIR/gpg-agent.conf" "$HOME/.gnupg/gpg-agent.conf"
 chmod 700 ~/.gnupg

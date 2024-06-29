@@ -5,7 +5,7 @@ DIR=$(dirname "$0")
 # shellcheck source=/dev/null
 . "$DOTFILES_HOME/bin/_bootstrap.zsh"
 
-module_brew_bundle "$(basename $DIR)"
+module_brew_bundle "$(basename "$DIR")"
 
 tools=('dotnet-outdated-tool' 'security-scan')
 

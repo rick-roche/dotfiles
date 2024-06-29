@@ -10,5 +10,7 @@ module_brew_bundle "$(basename "$DIR")"
 # install sdkman
 curl -s "https://get.sdkman.io" | bash
 rm -rf "$HOME/.bash_profile"
+
+# shellcheck disable=SC1091
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 sdk install java

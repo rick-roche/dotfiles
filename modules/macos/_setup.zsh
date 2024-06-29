@@ -5,5 +5,7 @@ DIR=$(dirname "$0")
 # shellcheck source=/dev/null
 . "$DOTFILES_HOME/bin/_bootstrap.zsh"
 
-. $DIR/defaults.zsh
-. $DIR/dock.zsh
+# shellcheck disable=SC1091
+. "$DIR/defaults.zsh"
+# shellcheck disable=SC1091
+. "$DIR/dock.zsh"

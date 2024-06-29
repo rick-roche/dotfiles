@@ -33,5 +33,5 @@ module_brew_bundle() {
 
     local module="$1"
     bundle_file_name="$DOTFILES_HOME/modules/$module/Brewfile"
-    brew_bundle $bundle_file_name
+    brew_bundle "$bundle_file_name"
 }

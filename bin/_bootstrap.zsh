@@ -50,6 +50,7 @@ logging_info "Using: $DOTFILES_SETTINGS_FILE_NAME"
 function dotfiles_verify_settings() {
     if [[ "$DOTFILES_SETTINGS_MODE" != "custom" ]]; then
         logging_error "General settings used - create a custom file for this machine: $DOTFILES_HOME/settings/_$(uname -n).zsh"
+        # shellcheck disable=SC2317
         exit 1
     fi
 }
