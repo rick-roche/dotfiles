@@ -1,1 +1,4 @@
-code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*; }
+#!/bin/zsh
+# shellcheck shell=bash
+
+code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"; }

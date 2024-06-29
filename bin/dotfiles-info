@@ -1,7 +1,9 @@
 #!/bin/zsh
+# shellcheck shell=bash
 
 export DOTFILES_VERBOSE=1
-. $(dirname $0)/_bootstrap.zsh
+# shellcheck source=/dev/null
+. "$(dirname $0)/_bootstrap.zsh"
 
 echo "Machine name: $(uname -n)"
 echo "Personality:  $DOTFILES_PERSONALITY"

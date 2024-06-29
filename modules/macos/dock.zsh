@@ -1,4 +1,5 @@
 #!/bin/zsh
+# shellcheck shell=bash
 
 dockutil --no-restart --remove all
 dockutil --no-restart --add "/Applications/Microsoft Edge.app/"

@@ -1,3 +1,6 @@
+#!/bin/zsh
+# shellcheck shell=bash
+
 function setupKubeConfigs() {
     if [[ $(ls ~/.kube/configs | wc -l) != 0 ]]; then
         export KUBECONFIG="$HOME/.kube/config:$KUBECONFIG"

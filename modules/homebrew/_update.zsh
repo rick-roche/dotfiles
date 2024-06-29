@@ -1,6 +1,8 @@
 #!/bin/zsh
+# shellcheck shell=bash
 
-. $DOTFILES_HOME/bin/_bootstrap.zsh
+# shellcheck source=/dev/null
+. "$DOTFILES_HOME/bin/_bootstrap.zsh"
 
 brew update
 brew upgrade

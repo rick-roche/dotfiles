@@ -1,7 +1,11 @@
+#!/bin/zsh
+# shellcheck shell=bash
+
 export DOTFILES_HOME=$HOME/.dotfiles
 export XDG_CONFIG_HOME="$HOME/.config"
 export DEFAULT_PERSONALITY=base
 
+# shellcheck source=/dev/null
 source "$DOTFILES_HOME/bin/_functions.zsh"
 
 function logging_debug() {
@@ -40,7 +44,8 @@ if [[ ! -r "$DOTFILES_SETTINGS_FILE_NAME" ]]; then
 fi
 
 logging_info "Using: $DOTFILES_SETTINGS_FILE_NAME"
-. $DOTFILES_SETTINGS_FILE_NAME
+# shellcheck source=/dev/null
+. "$DOTFILES_SETTINGS_FILE_NAME"
 
 function dotfiles_verify_settings() {
     if [[ "$DOTFILES_SETTINGS_MODE" != "custom" ]]; then
