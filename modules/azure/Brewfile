@@ -1,4 +1,6 @@
+tap "azure/azd"
 tap "azure/functions"
 
+brew "azd"
 brew "azure-cli"
 brew "azure-functions-core-tools"
