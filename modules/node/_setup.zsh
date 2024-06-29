@@ -6,11 +6,12 @@ DIR=$(dirname "$0")
 NVM_DIR=$HOME/.nvm
 
 if ! [ -d $NVM_DIR/.git ]; then
-    git clone https://github.com/creationix/nvm.git $NVM_DIR;
+    git clone https://github.com/creationix/nvm.git $NVM_DIR
 fi
 
-. $NVM_DIR/nvm.sh; nvm install --lts
-. $NVM_DIR/nvm.sh; nvm install node
-. $NVM_DIR/nvm.sh; nvm use node
+. $NVM_DIR/nvm.sh
+nvm install --lts
+nvm install node
+nvm use node
 
-. $NVM_DIR/nvm.sh; npm install -g $(cat $DIR/npmfile)
+npm install -g $(cat $DIR/npmfile)

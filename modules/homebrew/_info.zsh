@@ -2,7 +2,7 @@
 
 . $DOTFILES_HOME/bin/_bootstrap.zsh
 
-if `$DOTFILES_HOME/bin/is-executable brew`; then
+if $($DOTFILES_HOME/bin/is-executable brew); then
     if [[ "$(uname -p)" -eq "arm" ]]; then
         echo "homebrew:     ARM hardware"
     else

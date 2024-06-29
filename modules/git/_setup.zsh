@@ -5,7 +5,7 @@ DIR=$(dirname "$0")
 
 mkdir -p $DOTFILES_HOME/modules/git/git
 
-sed "s/EMAILADDRESS/$EMAIL_ADDRESS/g" $DIR/config.template  > $DIR/git/config
+sed "s/EMAILADDRESS/$EMAIL_ADDRESS/g" $DIR/config.template >$DIR/git/config
 sed -i "s/GPGKEY/$GPG_KEY/g" $DIR/git/config
 cp $DIR/ignore $DIR/git/ignore
 

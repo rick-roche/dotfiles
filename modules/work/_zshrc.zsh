@@ -1,1 +1,1 @@
-code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+code() { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $*; }

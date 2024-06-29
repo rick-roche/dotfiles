@@ -22,4 +22,3 @@ curl -o "$HOME/Library/Fonts/MesloLGS NF Bold Italic.ttf" -fsSL https://github.c
 rm -rf ~/.zshrc ~/.zprofile
 stow -R -d $DIR -t $HOME runcom
 # ln -s -f $DOTFILES_HOME/modules/zsh/.zshrc ~/.zshrc
-
