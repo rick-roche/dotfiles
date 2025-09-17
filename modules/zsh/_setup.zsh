@@ -23,4 +23,6 @@ curl -o "$HOME/Library/Fonts/MesloLGS NF Bold Italic.ttf" -fsSL https://github.c
 # Link
 rm -rf ~/.zshrc ~/.zprofile
 stow -R -d "$DIR" -t "$HOME" runcom
-# ln -s -f $DOTFILES_HOME/modules/zsh/.zshrc ~/.zshrc
+
+# Link the starship config
+stow -R -d "$DIR" -t "$XDG_CONFIG_HOME" starship

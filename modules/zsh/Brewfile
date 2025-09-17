@@ -1,2 +1,2 @@
 brew "zsh"
-brew "romkatv/powerlevel10k/powerlevel10k"
+brew "starship"

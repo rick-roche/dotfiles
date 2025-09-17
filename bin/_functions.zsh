@@ -35,3 +35,19 @@ module_brew_bundle() {
     bundle_file_name="$DOTFILES_HOME/modules/$module/Brewfile"
     brew_bundle "$bundle_file_name"
 }
+
+################################################################################
+# Function: timezsh
+#
+# Measure the startup time of zsh
+# Borrowed from https://blog.mattclemente.com/2020/06/26/oh-my-zsh-slow-to-load/
+#
+# Arguments:
+#   $1 - path to the zsh binary (optional, defaults to $SHELL)
+# Return:
+# 	0 if success, non-zero otherwise.
+################################################################################
+timezsh() {
+    shell=${1-$SHELL}
+    for _ in $(seq 1 10); do /usr/bin/time "$shell" -i -c exit; done
+}
