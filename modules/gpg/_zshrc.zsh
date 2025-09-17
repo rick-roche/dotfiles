@@ -3,4 +3,7 @@
 
 # shellcheck disable=SC2155
 export GPG_TTY=$(tty)
-gpgconf --launch gpg-agent
+# only launch once
+if [ -z "$(pgrep gpg-agent)" ]; then
+    gpgconf --launch gpg-agent
+fi
