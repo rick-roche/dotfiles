@@ -18,6 +18,16 @@ dotfiles supports the following commands:
         Runs through the configuration and ensures that all modules are
         up to date.
 
+    align
+
+        Compares installed Homebrew formula leaves and casks against dotfiles
+        configured Brewfiles, then lists unmanaged items and prompts before
+        uninstalling them.
+
+        Options:
+            -n, --dry-run  List unmanaged items and exit without uninstalling.
+            -y, --yes      Skip the confirmation prompt and uninstall directly.
+
     cleanup
 
         Runs through all of the possible modules and uninstalls them.  This is
