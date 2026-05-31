@@ -11,14 +11,15 @@ export CODE_DEST="$HOME/code"
 DOTFILES_MODULES+=(
     dev
     azure
+    cloudflare
     docker
     dotnet
     github
     golang
     media
     music
+    mysql
     raspberry-pi
     terraform
     textual
-    mysql
 )
