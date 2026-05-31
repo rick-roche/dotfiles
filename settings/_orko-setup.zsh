@@ -9,12 +9,17 @@ export CODE_DEST="$HOME/code"
 . "$DOTFILES_HOME/settings/_base-setup.zsh"
 
 DOTFILES_MODULES+=(
-    azure
     dev
+    azure
+    cloudflare
     docker
     dotnet
+    github
     golang
-    node
     media
+    music
+    mysql
     raspberry-pi
+    terraform
+    textual
 )

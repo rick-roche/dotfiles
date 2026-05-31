@@ -13,5 +13,5 @@ export DOTFILES_MODULES=(
     base-cask
     zsh
     gpg
-    # macos
+    node
 )

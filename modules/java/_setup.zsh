@@ -13,4 +13,4 @@ rm -rf "$HOME/.bash_profile"
 
 # shellcheck disable=SC1091
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk install java
+sdk install java 26-tem

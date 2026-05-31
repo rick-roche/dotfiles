@@ -1,6 +1,6 @@
 # My dotfiles
 
-These are my dotfiles, targetting macOS, with the ability to setup any of my machines. The goal is to provide a repeatable, modular approach to setting up and maintaining a macOS installation with [zsh](https://www.zsh.org/) as the primary shell. In the past these dotfiles used [bash](https://www.gnu.org/software/bash/) as the primary shell.
+These are my dotfiles, targetting macOS, with the ability to setup any of my machines. The goal is to provide a repeatable, modular approach to setting up and maintaining a macOS installation with [zsh](https://www.zsh.org/) as the primary shell.
 
 ## Installation
 
@@ -55,10 +55,6 @@ The dotfiles setup adds the `dotfiles` command to your path. Usage for the comma
 - `dotfiles info` - Displays the setup of the machine on which this command is run
 - `dotfiles setup` - Use this to setup a new machine
 - `dotfiles update` - Use this to update all your modules
-
-## Customise
-
-TODO
 
 ## Acknowledgments
 

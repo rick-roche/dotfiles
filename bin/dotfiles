@@ -13,6 +13,10 @@ export DOTFILES_VERBOSE=1
 COMMAND=$1
 
 case "$COMMAND" in
+"align")
+    shift
+    exec "$(dirname $0)/dotfiles-align" "$@"
+    ;;
 "cleanup")
     shift
     exec "$(dirname $0)/dotfiles-cleanup" "$@"

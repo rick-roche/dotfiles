@@ -1,13 +1,12 @@
-tap "aquasecurity/trivy"
-
-brew "gitleaks"
 brew "hugo"
 brew "netlify-cli"
-brew "trivy"
 
 brew "markdownlint-cli"
 brew "shellcheck"
 
+brew "copilot-cli"
+brew "anomalyco/tap/opencode"
+
 cask "github"
-cask "postman"
 cask "visual-studio-code"
+

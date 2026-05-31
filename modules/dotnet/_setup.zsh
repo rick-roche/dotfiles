@@ -7,10 +7,15 @@ DIR=$(dirname "$0")
 
 module_brew_bundle "$(basename "$DIR")"
 
-tools=('dotnet-outdated-tool' 'security-scan')
+tools=('dotnet-aspnet-codegenerator' 'dotnet-outdated-tool' 'security-scan')
 
 for t in "${tools[@]}"; do
     dotnet tool update --global "$t"
 done
 
+dotnet dev-certs https --trust
+
 dotnet --list-sdks
+
+sudo dotnet workload update
+sudo dotnet workload install aspire

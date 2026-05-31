@@ -1,0 +1,160 @@
+#!/bin/zsh
+# shellcheck shell=bash
+
+# shellcheck source=/dev/null
+. "$(dirname $0)/_bootstrap.zsh"
+
+export DOTFILES_VERBOSE=1
+
+AUTO_YES=0
+DRY_RUN=0
+
+while (( $# > 0 )); do
+    case "$1" in
+    -y|--yes)
+        AUTO_YES=1
+        ;;
+    -n|--dry-run)
+        DRY_RUN=1
+        ;;
+    -h|--help)
+        cat <<'EOF'
+Usage: dotfiles align [--dry-run] [--yes]
+
+    --dry-run, -n   Show unmanaged formulas/casks and exit without uninstalling.
+    --yes, -y       Skip confirmation prompt and uninstall immediately.
+EOF
+        exit 0
+        ;;
+    *)
+        logging_error "Unknown option: $1"
+        ;;
+    esac
+    shift
+done
+
+dotfiles_verify_settings
+
+if ! command -v brew >/dev/null 2>&1; then
+    logging_error "Homebrew is required but brew was not found on PATH"
+fi
+
+typeset -A CONFIGURED_FORMULA_MAP
+typeset -A CONFIGURED_CASK_MAP
+typeset -a INSTALLED_MANUAL_LEAVES
+typeset -a INSTALLED_CASKS
+typeset -a UNMANAGED_FORMULAS
+typeset -a UNMANAGED_CASKS
+
+formula_is_configured() {
+    local installed_formula="$1"
+    local formula_name="${installed_formula##*/}"
+
+    if [[ -n "${CONFIGURED_FORMULA_MAP[$installed_formula]}" ]]; then
+        return 0
+    fi
+
+    if [[ -n "${CONFIGURED_FORMULA_MAP[$formula_name]}" ]]; then
+        return 0
+    fi
+
+    return 1
+}
+
+for module in $DOTFILES_MODULES; do
+    BREWFILE="$DOTFILES_HOME/modules/$module/Brewfile"
+
+    if [[ ! -r "$BREWFILE" ]]; then
+        logging_debug "$module: no readable Brewfile"
+        continue
+    fi
+
+    while IFS= read -r formula || [[ -n "$formula" ]]; do
+        if [[ -n "$formula" ]]; then
+            CONFIGURED_FORMULA_MAP[$formula]=1
+        fi
+    done < <(sed -nE 's/^[[:space:]]*brew[[:space:]]+"([^"]+)".*/\1/p' "$BREWFILE")
+
+    while IFS= read -r cask || [[ -n "$cask" ]]; do
+        if [[ -n "$cask" ]]; then
+            CONFIGURED_CASK_MAP[$cask]=1
+        fi
+    done < <(sed -nE 's/^[[:space:]]*cask[[:space:]]+"([^"]+)".*/\1/p' "$BREWFILE")
+done
+
+while IFS= read -r formula; do
+    if [[ -n "$formula" ]]; then
+        INSTALLED_MANUAL_LEAVES+=("$formula")
+    fi
+done < <(brew leaves -r | sort -u)
+
+while IFS= read -r cask; do
+    if [[ -n "$cask" ]]; then
+        INSTALLED_CASKS+=("$cask")
+    fi
+done < <(brew list --cask | sort -u)
+
+for formula in "${INSTALLED_MANUAL_LEAVES[@]}"; do
+    if ! formula_is_configured "$formula"; then
+        UNMANAGED_FORMULAS+=("$formula")
+    fi
+done
+
+for cask in "${INSTALLED_CASKS[@]}"; do
+    if [[ -z "${CONFIGURED_CASK_MAP[$cask]}" ]]; then
+        UNMANAGED_CASKS+=("$cask")
+    fi
+done
+
+if (( ${#UNMANAGED_FORMULAS[@]} == 0 && ${#UNMANAGED_CASKS[@]} == 0 )); then
+    logging_status "Homebrew is already aligned with dotfiles configuration"
+    exit 0
+fi
+
+if (( ${#UNMANAGED_FORMULAS[@]} > 0 )); then
+    logging_status "Unmanaged formulas (manual leaves):"
+    for formula in "${UNMANAGED_FORMULAS[@]}"; do
+        echo "  - $formula"
+    done
+fi
+
+if (( ${#UNMANAGED_CASKS[@]} > 0 )); then
+    logging_status "Unmanaged casks:"
+    for cask in "${UNMANAGED_CASKS[@]}"; do
+        echo "  - $cask"
+    done
+fi
+
+if (( DRY_RUN == 1 )); then
+    logging_status "Dry run complete: no packages were uninstalled"
+    exit 0
+fi
+
+if (( AUTO_YES == 1 )); then
+    logging_status "Confirmation skipped due to --yes"
+else
+    echo
+    printf "Proceed with uninstalling these items? [y/N]: "
+    read -r confirm
+
+    case "${confirm:l}" in
+        y|yes)
+            ;;
+        *)
+            logging_status "Cancelled without uninstalling any packages"
+            exit 0
+            ;;
+    esac
+fi
+
+if (( ${#UNMANAGED_FORMULAS[@]} > 0 )); then
+    logging_status "Uninstalling unmanaged formulas"
+    brew uninstall "${UNMANAGED_FORMULAS[@]}" || logging_error "Failed to uninstall one or more formulas"
+fi
+
+if (( ${#UNMANAGED_CASKS[@]} > 0 )); then
+    logging_status "Uninstalling unmanaged casks"
+    brew uninstall --cask "${UNMANAGED_CASKS[@]}" || logging_error "Failed to uninstall one or more casks"
+fi
+
+logging_status "Alignment complete: removed ${#UNMANAGED_FORMULAS[@]} formulas and ${#UNMANAGED_CASKS[@]} casks"

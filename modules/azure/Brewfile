@@ -1,6 +1,8 @@
 tap "azure/azd"
-tap "azure/functions"
+tap "azure/bicep"
 
 brew "azd"
 brew "azure-cli"
-brew "azure-functions-core-tools"
+brew "azcopy"
+
+brew "bicep"

@@ -1,4 +1,4 @@
-# tap "isen-ng/dotnet-sdk-versions"
+tap "isen-ng/dotnet-sdk-versions"
 
 cask "dotnet-sdk"
-# cask "dotnet-sdk6-0-400"
+cask "dotnet-sdk8-0-400"
