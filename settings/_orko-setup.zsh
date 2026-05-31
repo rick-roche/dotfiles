@@ -20,4 +20,5 @@ DOTFILES_MODULES+=(
     raspberry-pi
     terraform
     textual
+    mysql
 )
