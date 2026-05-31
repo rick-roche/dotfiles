@@ -1,2 +1,6 @@
 brew "python"
+
+brew "pipx"
+brew "uv"
+
 brew "black"

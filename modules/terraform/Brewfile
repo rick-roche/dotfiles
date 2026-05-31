@@ -1,3 +1,2 @@
 brew "tflint"
 brew "terraform"
-brew "tfsec"

@@ -1,0 +1,7 @@
+brew "mp3val"
+brew "sox"
+
+cask "musicbrainz-picard"
+cask "sonos"
+cask "spotify"
+cask "xld"

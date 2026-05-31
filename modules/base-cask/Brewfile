@@ -5,8 +5,9 @@ tap "homebrew/cask-versions"
 
 cask "bitwarden"
 cask "gimp"
-cask "google-chrome"
 cask "iterm2"
 cask "obsidian"
-cask "spotify"
 cask "vlc"
+
+cask "brave-browser"
+cask "the-unarchiver"
