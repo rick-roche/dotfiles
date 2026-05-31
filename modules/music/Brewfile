@@ -1,3 +1,4 @@
+brew "ffmpeg"
 brew "mp3val"
 brew "sox"
 
