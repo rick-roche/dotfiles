@@ -56,10 +56,6 @@ The dotfiles setup adds the `dotfiles` command to your path. Usage for the comma
 - `dotfiles setup` - Use this to setup a new machine
 - `dotfiles update` - Use this to update all your modules
 
-## Customise
-
-TODO
-
 ## Acknowledgments
 
 * [Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.io)
