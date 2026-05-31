@@ -497,4 +497,4 @@ Before committing a new module:
 
 - [hook-scripts.md](hook-scripts.md) — Detailed patterns for each hook script type
 - [brewfile-reference.md](brewfile-reference.md) — Brewfile syntax and conventions
-- [AGENTS.md](../../AGENTS.md) — Full repository conventions
+- [AGENTS.md](../../../../AGENTS.md) — Full repository conventions

@@ -616,4 +616,4 @@ Before committing hook scripts:
 
 - [module-anatomy.md](module-anatomy.md) — Complete file structure reference
 - [brewfile-reference.md](brewfile-reference.md) — Brewfile syntax and conventions
-- [AGENTS.md](../../AGENTS.md) — Full repository conventions
+- [AGENTS.md](../../../../AGENTS.md) — Full repository conventions

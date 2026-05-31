@@ -56,7 +56,7 @@ Skills are designed to be discovered and used by AI agents automatically. When y
 Different agents support skills differently:
 - [GitHub Copilot](https://github.com/) — Reads SKILL.md and reference files on demand
 - [OpenCode](https://opencode.ai/) — Auto-loads nearby skills
-- [Cursor](https://cursor.com/), [Claude Code](https://claude.ai/code), and many others
+- [Cursor](https://cursor.com/), [Claude Code](https://www.anthropic.com/claude-code), and many others
 
 See [agentskills.io/clients](https://agentskills.io/clients) for a full list of compatible tools.
 

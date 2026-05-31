@@ -286,7 +286,7 @@ This symlinks `config/my-app/` → `~/.config/my-app/` and `.myrc` → `~/.myrc`
 
 ## Next Steps
 
-- **Review repository conventions** in [AGENTS.md](../../AGENTS.md)
+- **Review repository conventions** in [AGENTS.md](../../../AGENTS.md)
 - **Explore module examples** in `modules/git/`, `modules/zsh/`, `modules/node/`
 - **Run the scaffold script** to stub out a new module: `.agents/skills/create-module/scripts/create-module.zsh <name>`
 - **Test thoroughly** before committing to ensure all hooks work correctly
@@ -298,4 +298,4 @@ This symlinks `config/my-app/` → `~/.config/my-app/` and `.myrc` → `~/.myrc`
 - [module-anatomy.md](references/module-anatomy.md) — Complete file structure and examples
 - [hook-scripts.md](references/hook-scripts.md) — Detailed patterns for each hook
 - [brewfile-reference.md](references/brewfile-reference.md) — Brewfile syntax and conventions
-- [AGENTS.md](../../AGENTS.md) — Full repository conventions and patterns
+- [AGENTS.md](../../../AGENTS.md) — Full repository conventions and patterns

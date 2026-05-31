@@ -450,5 +450,5 @@ Brewfile has no separate linter; `brew bundle --dry-run` is the validation tool.
 
 - [module-anatomy.md](module-anatomy.md) — Complete module structure reference
 - [hook-scripts.md](hook-scripts.md) — Patterns for hook scripts
-- [AGENTS.md](../../AGENTS.md) — Full repository conventions
+- [AGENTS.md](../../../../AGENTS.md) — Full repository conventions
 - [Homebrew Bundle Docs](https://github.com/Homebrew/homebrew-bundle)
