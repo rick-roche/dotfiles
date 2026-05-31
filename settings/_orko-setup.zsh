@@ -13,9 +13,11 @@ DOTFILES_MODULES+=(
     azure
     docker
     dotnet
+    github
     golang
     media
     music
     raspberry-pi
     terraform
+    textual
 )
