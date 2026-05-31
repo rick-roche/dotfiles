@@ -6,7 +6,7 @@ This file provides context and guidance for AI agents working with the dotfiles 
 
 A modular macOS dotfiles repository using **zsh** as the primary shell. The goal is to provide a repeatable, version-controlled approach to setting up and maintaining macOS machines with personalized configurations.
 
-Repository: https://github.com/rick-roche/dotfiles
+Repository: <https://github.com/rick-roche/dotfiles>
 Installation: `git clone https://github.com/rick-roche/dotfiles.git ~/.dotfiles`
 
 ## Repository Structure
@@ -34,14 +34,14 @@ Each module in `modules/<name>/` is optional and self-contained:
 
 ### Optional Hook Scripts (per module)
 
-| Hook | Phase | Purpose |
-|------|-------|---------|
-| `_setup.zsh` | setup | Install dependencies, symlink config files, run one-time initialization |
-| `_update.zsh` | update | Update dependencies and configurations |
-| `_cleanup.zsh` | cleanup | Remove module-specific artifacts |
-| `_info.zsh` | info | Display module information and status |
-| `_zshrc.zsh` | login | Shell aliases and functions (sourced by `.zshrc`) |
-| `_zprofile.zsh` | login | Environment variables (sourced by `.zprofile`) |
+| Hook            | Phase   | Purpose                                                                 |
+|-----------------|---------|-------------------------------------------------------------------------|
+| `_setup.zsh`    | setup   | Install dependencies, symlink config files, run one-time initialization |
+| `_update.zsh`   | update  | Update dependencies and configurations                                  |
+| `_cleanup.zsh`  | cleanup | Remove module-specific artifacts                                        |
+| `_info.zsh`     | info    | Display module information and status                                   |
+| `_zshrc.zsh`    | login   | Shell aliases and functions (sourced by `.zshrc`)                       |
+| `_zprofile.zsh` | login   | Environment variables (sourced by `.zprofile`)                          |
 
 Each hook script must start with:
 ```zsh

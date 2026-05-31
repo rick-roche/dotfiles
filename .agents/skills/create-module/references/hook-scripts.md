@@ -8,14 +8,14 @@ This document provides detailed patterns, boilerplate templates, and real exampl
 
 Hook scripts are optional shell scripts that run at different phases of the module lifecycle:
 
-| Hook | Phase | When | Typical Use |
-|------|-------|------|-------------|
-| `_setup.zsh` | Initialize | First time (manual or via `dotfiles setup`) | Install packages, symlink config, download files |
-| `_update.zsh` | Update | Via `dotfiles update` | Update packages and refresh configurations |
-| `_cleanup.zsh` | Cleanup | Via `dotfiles cleanup` | Remove symlinks, delete generated files |
-| `_info.zsh` | Info | Via `dotfiles info` | Display module status and configuration |
-| `_zshrc.zsh` | Login | Every shell login | Aliases, functions, shell options |
-| `_zprofile.zsh` | Login | Once at shell startup | Environment variables, PATH exports |
+| Hook            | Phase      | When                                        | Typical Use                                      |
+|-----------------|------------|---------------------------------------------|--------------------------------------------------|
+| `_setup.zsh`    | Initialize | First time (manual or via `dotfiles setup`) | Install packages, symlink config, download files |
+| `_update.zsh`   | Update     | Via `dotfiles update`                       | Update packages and refresh configurations       |
+| `_cleanup.zsh`  | Cleanup    | Via `dotfiles cleanup`                      | Remove symlinks, delete generated files          |
+| `_info.zsh`     | Info       | Via `dotfiles info`                         | Display module status and configuration          |
+| `_zshrc.zsh`    | Login      | Every shell login                           | Aliases, functions, shell options                |
+| `_zprofile.zsh` | Login      | Once at shell startup                       | Environment variables, PATH exports              |
 
 ---
 
@@ -601,14 +601,14 @@ Before committing hook scripts:
 
 ## Common Mistakes
 
-| Mistake | Issue | Fix |
-|---------|-------|-----|
-| Forgetting shebang | Script won't execute | Add `#!/bin/zsh` at top |
-| Not sourcing `_bootstrap.zsh` | Logging functions unavailable | Add `. "$DOTFILES_HOME/bin/_bootstrap.zsh"` |
-| Using `echo` instead of logging | Output not formatted; hard to parse | Use `logging_status`, `logging_info`, etc. |
-| Unquoted variables | Word splitting and glob expansion errors | Quote all variables: `"$VAR"` |
-| Missing `/bin/bash` for shellcheck | Linter treats as zsh, misses bash bugs | Add comment: `# shellcheck shell=bash` |
-| Creating `_zshrc.zsh` that sources bootstrap | Massive slowdown (bootstrap runs every login) | Remove bootstrap source from `_zshrc.zsh` |
+| Mistake                                      | Issue                                         | Fix                                         |
+|----------------------------------------------|-----------------------------------------------|---------------------------------------------|
+| Forgetting shebang                           | Script won't execute                          | Add `#!/bin/zsh` at top                     |
+| Not sourcing `_bootstrap.zsh`                | Logging functions unavailable                 | Add `. "$DOTFILES_HOME/bin/_bootstrap.zsh"` |
+| Using `echo` instead of logging              | Output not formatted; hard to parse           | Use `logging_status`, `logging_info`, etc.  |
+| Unquoted variables                           | Word splitting and glob expansion errors      | Quote all variables: `"$VAR"`               |
+| Missing `/bin/bash` for shellcheck           | Linter treats as zsh, misses bash bugs        | Add comment: `# shellcheck shell=bash`      |
+| Creating `_zshrc.zsh` that sources bootstrap | Massive slowdown (bootstrap runs every login) | Remove bootstrap source from `_zshrc.zsh`   |
 
 ---
 

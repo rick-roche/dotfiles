@@ -72,14 +72,14 @@ Modules can include optional hook scripts that run at different phases. See [hoo
 
 ### Quick Reference
 
-| Hook | When to use |
-|------|-----------|
-| `_setup.zsh` | Install dependencies, symlink files, one-time initialization |
-| `_update.zsh` | Update dependencies and refresh configurations |
-| `_cleanup.zsh` | Remove module artifacts when cleaning up |
-| `_info.zsh` | Display module status or configuration |
-| `_zshrc.zsh` | Shell aliases and functions (sourced on every shell login) |
-| `_zprofile.zsh` | Environment variables (sourced once at shell startup) |
+| Hook            | When to use                                                  |
+|-----------------|--------------------------------------------------------------|
+| `_setup.zsh`    | Install dependencies, symlink files, one-time initialization |
+| `_update.zsh`   | Update dependencies and refresh configurations               |
+| `_cleanup.zsh`  | Remove module artifacts when cleaning up                     |
+| `_info.zsh`     | Display module status or configuration                       |
+| `_zshrc.zsh`    | Shell aliases and functions (sourced on every shell login)   |
+| `_zprofile.zsh` | Environment variables (sourced once at shell startup)        |
 
 **Common patterns:**
 - **Simple dependency module**: Just Brewfile (fallback to `module_brew_bundle`)

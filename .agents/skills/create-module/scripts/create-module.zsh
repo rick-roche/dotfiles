@@ -54,7 +54,7 @@ echo -e "${GREEN}Creating module:${NC} $MODULE_NAME"
 mkdir -p "$MODULE_DIR"
 
 # Create Brewfile (empty stub)
-cat > "$MODULE_DIR/Brewfile" <<'EOF'
+cat >"$MODULE_DIR/Brewfile" <<'EOF'
 tap "homebrew/core"
 
 # Add dependencies here
@@ -65,7 +65,7 @@ EOF
 echo -e "${GREEN}✓${NC} Created: Brewfile"
 
 # Create _setup.zsh stub
-cat > "$MODULE_DIR/_setup.zsh" <<'EOF'
+cat >"$MODULE_DIR/_setup.zsh" <<'EOF'
 #!/bin/zsh
 # shellcheck shell=bash
 
