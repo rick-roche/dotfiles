@@ -10,7 +10,7 @@
 	trustctime = false
 	autocrlf = input
 	untrackedCache = true
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 	ignorecase = false
 
 [credential]
@@ -45,16 +45,41 @@
 	lg = log -p
 	ll = log --pretty=oneline --graph --abbrev-commit
 	lm = log --pretty=format:'* %s (%h)'
+	main = switch main
+	new = switch -c
 	patch = !git --no-pager diff --no-color
 	p = push
 	pr = "!f() { git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && git checkout pr/$1; }; f"
 	st = status
 	sts = status -sb
+	sw = switch
 	unstage = reset --hard HEAD
 
+[delta]
+    navigate = true
+    line-numbers = true
+
+    # Strong non-red/green distinction
+    minus-style = syntax "#5f005f" strike
+    minus-emph-style = syntax "#870087" bold strike
+    plus-style = syntax "#005f87"
+    plus-emph-style = syntax "#0087af" bold
+
+    # Make line number columns clearly different too
+    minus-line-number-style = "#d75f00"
+    plus-line-number-style = "#00afff"
+    line-numbers-zero-style = "#666666"
+
+    # Clearly delineate sections
+    hunk-header-style = syntax bold
+    file-style = bold
+
 [diff]
-	renames = copies
+    algorithm = histogram
+    colorMoved = default
 	indentHeuristic = true
+    mnemonicPrefix = true
+	renames = copies
 	tool = opendiff
 [difftool]
 	prompt = false
@@ -66,7 +91,7 @@
 
 [merge]
 	tool = Kaleidoscope
-	conflictstyle = diff3
+	conflictStyle = zdiff3
 	defaultToUpstream = true
 [mergetool]
 	prompt = false
@@ -80,30 +105,28 @@
 	current = yellow reverse
 	local = yellow
 	remote = green
-[color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
 [color "status"]
 	added = yellow
 	changed = green
 	untracked = cyan
-[color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+
 [pull]
 	rebase = false
+
 [init]
 	defaultBranch = main
+
 [commit]
 	gpgSign = true
+
 [tag]
 	gpgSign = true
+
 [gpg]
 	program = /opt/homebrew/bin/gpg
+
+[interactive]
+    diffFilter = delta --color-only
 
 # Setup work email to be used for work folder
 # [user]
