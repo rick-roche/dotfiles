@@ -1,2 +1,6 @@
 brew "git"
 brew "git-extras"
+brew "lazygit"
+brew "git-delta"
+
+cask "git-credential-manager"

@@ -7,6 +7,4 @@ brew "shellcheck"
 brew "copilot-cli"
 brew "anomalyco/tap/opencode"
 
-cask "github"
-cask "visual-studio-code"
-
+cask "zed"

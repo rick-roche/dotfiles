@@ -5,7 +5,7 @@ tap "homebrew/cask-versions"
 
 cask "bitwarden"
 cask "gimp"
-cask "iterm2"
+cask "ghostty"
 cask "obsidian"
 cask "vlc"
 

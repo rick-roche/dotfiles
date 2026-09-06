@@ -15,4 +15,7 @@ cp "$DIR/ignore" "$DIR/git/ignore"
 mkdir -p "$XDG_CONFIG_HOME"
 ln -s -f "$DIR/git" "$XDG_CONFIG_HOME"
 
+mkdir -p "$XDG_CONFIG_HOME/lazygit"
+ln -s "$DOTFILES_HOME/modules/git/lazygit.config" "$XDG_CONFIG_HOME/lazygit/config.yml"
+
 module_brew_bundle "$(basename "$DIR")"
