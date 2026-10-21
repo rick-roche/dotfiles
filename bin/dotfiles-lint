@@ -24,7 +24,7 @@ print "Checking Markdown..."
 markdownlint-cli2
 
 print "Checking JSON and YAML formatting..."
-prettier --check '**/*.json' '**/*.yml' '**/*.yaml' --ignore-unknown
+prettier --check '**/*.{json,yml,yaml}' --ignore-unknown
 
 print "Checking GitHub Actions workflows..."
 actionlint

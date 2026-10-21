@@ -34,7 +34,7 @@ jobs:
       - name: Install lint tools
         run: |
           sudo apt-get update
-          sudo apt-get install --yes shellcheck shfmt
+          sudo apt-get install --yes shellcheck shfmt zsh
           npm install --global markdownlint-cli2@0.23.3 prettier@3.6.2
           go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.7
         env:

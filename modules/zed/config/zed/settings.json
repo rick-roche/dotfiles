@@ -8,14 +8,14 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "prettier": {
-    "allowed": true,
+    "allowed": true
   },
   "cli_default_open_behavior": "new_window",
   "git_panel": {
-    "dock": "right",
+    "dock": "right"
   },
   "project_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "disable_ai": true,
   "base_keymap": "VSCode",
@@ -24,18 +24,18 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "One Dark",
+    "dark": "One Dark"
   },
   "languages": {
     "Markdown": {
       "format_on_save": "on",
-      "soft_wrap": "none",
-    },
+      "soft_wrap": "none"
+    }
   },
   "terminal": {
     "font_family": "MesloLGS NF",
     "font_size": 15,
     // Terminal line height: comfortable (1.618), standard(1.3) or `{ "custom": 2 }`
-    "line_height": "standard",
-  },
+    "line_height": "standard"
+  }
 }
