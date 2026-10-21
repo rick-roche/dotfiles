@@ -5,6 +5,6 @@ brew "markdownlint-cli"
 brew "shellcheck"
 
 brew "copilot-cli"
-brew "anomalyco/tap/opencode"
+brew "opencode"
 
 cask "zed"
