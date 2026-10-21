@@ -53,4 +53,10 @@ function dotfiles_verify_settings() {
         # shellcheck disable=SC2317
         exit 1
     fi
+
+    for module in "${DOTFILES_MODULES[@]}"; do
+        if [[ ! "$module" =~ ^[a-z0-9-]+$ || ! -d "$DOTFILES_HOME/modules/$module" ]]; then
+            logging_error "Invalid or unknown module in settings: $module"
+        fi
+    done
 }

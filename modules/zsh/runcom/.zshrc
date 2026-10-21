@@ -38,3 +38,7 @@ if [ -n "${ZSH_PROFILE:+x}" ]
 then
     zprof
 fi
+
+if [[ -r "$DOTFILES_HOME/.zshrc.local" ]]; then
+    . "$DOTFILES_HOME/.zshrc.local"
+fi

@@ -1,10 +1,5 @@
 brew "hugo"
 brew "netlify-cli"
 
-brew "markdownlint-cli"
-brew "shellcheck"
-
 brew "copilot-cli"
-brew "anomalyco/tap/opencode"
-
-cask "zed"
+brew "opencode"

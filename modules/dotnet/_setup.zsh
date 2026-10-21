@@ -1,7 +1,7 @@
 #!/bin/zsh
 # shellcheck shell=bash
 
-DIR=$(dirname "$0")
+DIR=${DOTFILES_MODULE_DIR:-${0:A:h}}
 # shellcheck source=/dev/null
 . "$DOTFILES_HOME/bin/_bootstrap.zsh"
 

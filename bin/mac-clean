@@ -1,0 +1,321 @@
+#!/usr/bin/env zsh
+# mac-clean — macOS developer disk cleanup
+#
+# mac-clean                 Preview changes
+# mac-clean --apply         Standard cleanup
+# mac-clean --apply --deep  Aggressive cleanup
+# mac-clean --no-projects   Skip project directories
+
+emulate -R zsh
+setopt pipefail
+
+APPLY=0
+DEEP=0
+CLEAN_PROJECTS=1
+ERRORS=0
+
+# Update these to match your repository locations
+typeset -a PROJECT_DIRS
+PROJECT_DIRS=(
+  "${CODE_DEST:-$HOME/code}"
+)
+
+usage() {
+  cat <<'EOF'
+Usage: mac-clean [options]
+
+  --apply         Execute cleanup (default: dry run)
+  --deep          Include unused images and extra build outputs
+  --no-projects   Skip project directories
+  -h, --help      Show help
+
+Docker volumes are always preserved.
+EOF
+}
+
+for arg in "$@"; do
+  case "$arg" in
+    --apply) APPLY=1 ;;
+    --deep) DEEP=1 ;;
+    --no-projects) CLEAN_PROJECTS=0 ;;
+    -h|--help) usage; exit 0 ;;
+    *) print -u2 "Unknown option: $arg"; exit 1 ;;
+  esac
+done
+
+section() {
+  printf '\n========== %s ==========\n' "$1"
+}
+
+has() {
+  command -v "$1" >/dev/null 2>&1
+}
+
+run() {
+  printf '  $'
+  printf ' %q' "$@"
+  printf '\n'
+
+  if (( APPLY )); then
+    if ! "$@"; then
+      print -u2 "  WARNING: Command failed"
+      (( ERRORS += 1 ))
+    fi
+  fi
+}
+
+disk_usage() {
+  df -h "$HOME" | head -n 2
+}
+
+# Detect a .NET project in the parent directory
+dotnet_parent() {
+  local parent="$1"
+  local result
+
+  result=$(find "$parent" -maxdepth 1 -type f \
+    \( -name '*.csproj' \
+    -o -name '*.fsproj' \
+    -o -name '*.vbproj' \
+    -o -name '*.sln' \
+    -o -name '*.slnx' \) \
+    -print -quit 2>/dev/null)
+
+  [[ -n "$result" ]]
+}
+
+# Only permit recognised generated directories
+is_generated() {
+  local target="$1"
+  local parent="${target:h}"
+  local name="${target:t}"
+
+  case "$name" in
+    node_modules)
+      return 0 ;;
+    bin|obj|TestResults)
+      dotnet_parent "$parent" ;;
+    .next|.nuxt|.turbo)
+      [[ -f "$parent/package.json" ]] ;;
+    coverage)
+      [[ -f "$parent/package.json" ]] ||
+        dotnet_parent "$parent" ;;
+    dist|build)
+      (( DEEP )) && [[ -f "$parent/package.json" ]] ;;
+    *)
+      return 1 ;;
+  esac
+}
+
+# Protect directories containing Git-tracked files
+is_tracked() {
+  local target="$1"
+  local parent="${target:h}"
+  local name="${target:t}"
+  local tracked
+  local git_error
+
+  has git || return 2
+
+  git_error=$(git -C "$parent" rev-parse --is-inside-work-tree 2>&1) || {
+    case "$git_error" in
+      *'not a git repository'*|*'not a git directory'*) return 1 ;;
+      *) return 2 ;;
+    esac
+  }
+
+  tracked=$(git -C "$parent" ls-files -- "$name" 2>/dev/null) || return 2
+  [[ -n "$tracked" ]]
+}
+
+section "MAC CLEAN"
+
+if (( APPLY )); then
+  print "Mode: CLEANUP"
+else
+  print "Mode: DRY RUN — no changes"
+fi
+
+if (( DEEP )); then
+  print "Level: DEEP"
+else
+  print "Level: STANDARD"
+fi
+
+section "Disk space before"
+disk_usage
+
+# --------------------------------------------------
+# 1. HOMEBREW
+# --------------------------------------------------
+section "Homebrew"
+
+if has brew; then
+  if (( APPLY )); then
+    run brew cleanup -s
+    run brew autoremove
+  else
+    brew cleanup -n -s || true
+    brew autoremove --dry-run || true
+  fi
+else
+  print "Homebrew unavailable — skipping"
+fi
+
+# --------------------------------------------------
+# 2. NODE / JAVASCRIPT
+# --------------------------------------------------
+section "Node / JavaScript"
+
+if has npm; then
+  run npm cache clean --force
+fi
+
+if has pnpm; then
+  run pnpm store prune
+fi
+
+if has yarn; then
+  run yarn cache clean
+fi
+
+# --------------------------------------------------
+# 3. .NET / NUGET
+# --------------------------------------------------
+section ".NET / NuGet"
+
+if has dotnet; then
+  run dotnet nuget locals all --clear
+else
+  print ".NET unavailable — skipping"
+fi
+
+# --------------------------------------------------
+# 4. DOCKER
+# --------------------------------------------------
+section "Docker"
+
+if has docker && docker info >/dev/null 2>&1; then
+  print "Current Docker usage:"
+  docker system df || true
+
+  if (( DEEP )); then
+    # All unused images, stopped containers,
+    # unused networks and build cache.
+    # No volumes.
+    run docker system prune -a -f
+    run docker builder prune -a -f
+  else
+    # Stopped containers, unused networks,
+    # dangling images and build cache.
+    # No volumes.
+    run docker system prune -f
+  fi
+else
+  print "Docker unavailable or daemon not running"
+fi
+
+# --------------------------------------------------
+# 5. PROJECT BUILD ARTIFACTS
+# --------------------------------------------------
+if (( CLEAN_PROJECTS )); then
+  section "Project build artifacts"
+
+  # Portable temporary file avoids process
+  # substitution and subshell variable issues.
+  TARGET_FILE=$(mktemp \
+    "${TMPDIR:-/tmp}/mac-clean.XXXXXXXX") || {
+      print -u2 'ERROR: Could not create project scan temporary file'
+      exit 1
+    }
+
+  trap 'rm -f -- "$TARGET_FILE"' EXIT
+  typeset -A SEEN_TARGETS
+  typeset -A SEEN_ROOTS
+
+  for root in "${PROJECT_DIRS[@]}"; do
+    [[ -d "$root" ]] || continue
+
+    root=$(cd "$root" 2>/dev/null && pwd -P) || {
+      print -u2 "WARNING: Could not resolve project root; skipping: $root"
+      (( ERRORS += 1 ))
+      continue
+    }
+    [[ -n "${SEEN_ROOTS[$root]-}" ]] && continue
+    SEEN_ROOTS[$root]=1
+
+    print
+    print "Scanning: $root"
+
+    # Use NUL delimiters for paths containing spaces.
+    # Prune Git internals and generated directories.
+    find_names=( \
+      -name node_modules -o -name .next -o -name .nuxt -o \
+      -name .turbo -o -name coverage -o -name bin -o \
+      -name obj -o -name TestResults )
+    if (( DEEP )); then
+      find_names+=( -o -name dist -o -name build )
+    fi
+
+    if ! find "$root" \
+      -type d \( \
+        -name .git -o \
+        -name .svn -o \
+        -name .hg \
+      \) -prune -o \
+      -type d \( "${find_names[@]}" \) -prune -print0 \
+      > "$TARGET_FILE" 2>/dev/null; then
+      print -u2 "WARNING: Project scan failed: $root"
+      (( ERRORS += 1 ))
+      continue
+    fi
+
+    # Native Zsh: read NUL-delimited paths
+    # without Bash process substitution.
+    while IFS= read -r -d '' target; do
+      is_generated "$target" || continue
+
+      [[ -n "${SEEN_TARGETS[$target]-}" ]] && continue
+      SEEN_TARGETS[$target]=1
+
+      is_tracked "$target"
+      tracked_status=$?
+      if (( tracked_status == 0 )); then
+        print "  SKIP (Git tracked): $target"
+        continue
+      elif (( tracked_status == 2 )); then
+        print -u2 "WARNING: Unable to verify Git tracking status; preserving: $target"
+        (( ERRORS += 1 ))
+        continue
+      fi
+
+      size=$(du -sh "$target" 2>/dev/null |
+        awk '{print $1}')
+
+      printf '  [%s] %s\n' "${size:-?}" "$target"
+
+      run rm -rf -- "$target"
+
+    done < "$TARGET_FILE"
+  done
+fi
+
+# --------------------------------------------------
+# 6. SUMMARY
+# --------------------------------------------------
+section "Disk space after"
+disk_usage
+
+section "Finished"
+
+if (( APPLY )); then
+  print "Cleanup complete."
+  print "Failed commands: $ERRORS"
+else
+  print "Dry run complete. Nothing deleted."
+  print "Execute with: mac-clean --apply"
+fi
+
+print "Docker volumes and installed SDKs preserved."
+
+(( ERRORS == 0 ))

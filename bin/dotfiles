@@ -8,40 +8,49 @@
 export DOTFILES_VERBOSE=1
 
 # shellcheck source=/dev/null
-. "$(dirname $0)/_bootstrap.zsh"
+. "$(dirname "$0")/_bootstrap.zsh"
 
 COMMAND=$1
 
 case "$COMMAND" in
 "align")
     shift
-    exec "$(dirname $0)/dotfiles-align" "$@"
+    exec "$(dirname "$0")/dotfiles-align" "$@"
     ;;
 "cleanup")
     shift
-    exec "$(dirname $0)/dotfiles-cleanup" "$@"
+    exec "$(dirname "$0")/dotfiles-cleanup" "$@"
     ;;
 "info")
     shift
-    exec "$(dirname $0)/dotfiles-info" "$@"
+    exec "$(dirname "$0")/dotfiles-info" "$@"
+    ;;
+"lint")
+    shift
+    exec "$(dirname "$0")/dotfiles-lint" "$@"
+    ;;
+"reset")
+    shift
+    exec "$(dirname "$0")/dotfiles-reset" "$@"
     ;;
 "setup")
     shift
-    exec "$(dirname $0)/dotfiles-setup" "$@"
+    exec "$(dirname "$0")/dotfiles-setup" "$@"
     ;;
 "setup-name")
     shift
-    exec "$(dirname $0)/dotfiles-setup-name" "$@"
+    exec "$(dirname "$0")/dotfiles-setup-name" "$@"
     ;;
 "update")
     shift
-    exec "$(dirname $0)/dotfiles-update" "$@"
+    exec "$(dirname "$0")/dotfiles-update" "$@"
     ;;
 "")
-    exec "$(dirname $0)/dotfiles-usage"
+    exec "$(dirname "$0")/dotfiles-usage"
     ;;
 *)
     echo "Error: Unknown command: $COMMAND"
     echo "Run $0 without any command to see dotfile's usage."
+    exit 1
     ;;
 esac

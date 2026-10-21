@@ -1,3 +1,4 @@
+.wip/
 Brewfile.lock.json
 modules/git/git
-megalinter-reports
+/.zshrc.local

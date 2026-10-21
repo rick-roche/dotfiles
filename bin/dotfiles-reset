@@ -2,9 +2,15 @@
 # shellcheck shell=bash
 
 # shellcheck source=/dev/null
-. "$(dirname $0)/_bootstrap.zsh"
+. "$(dirname "$0")/_bootstrap.zsh"
 
 export DOTFILES_VERBOSE=1
+
+if [[ "$#" -ne 1 || "$1" != "--force" ]]; then
+    echo "Usage: dotfiles reset --force" >&2
+    echo "This removes all Homebrew formulae and casks." >&2
+    exit 2
+fi
 
 dotfiles_verify_settings
 

@@ -55,6 +55,25 @@ The dotfiles setup adds the `dotfiles` command to your path. Usage for the comma
 - `dotfiles info` - Displays the setup of the machine on which this command is run
 - `dotfiles setup` - Use this to setup a new machine
 - `dotfiles update` - Use this to update all your modules
+- `dotfiles cleanup` - Run any module cleanup hooks
+- `dotfiles align [--dry-run] [--yes]` - Review or remove packages not listed in configured Brewfiles
+- `dotfiles reset --force` - Remove all Homebrew formulae and casks
+- `dotfiles lint` - Run repository lint checks
+
+## Linting
+
+Install the lint tools from `modules/base-cli/Brewfile`, then run `dotfiles lint`.
+The checks cover shell scripts (ShellCheck and shfmt), Markdown
+(markdownlint-cli2), JSON/YAML formatting (Prettier), and GitHub Actions
+workflows (actionlint). The GitHub Actions workflow runs the same checks on
+pull requests and pushes to `main`.
+
+The `mac-clean` command scans `$CODE_DEST` for project build artifacts when
+that variable is set, and otherwise scans `~/code`.
+
+For machine-specific aliases and shell settings, add them to
+`~/.dotfiles/.zshrc.local`. This file is ignored by Git and sourced after the
+shared shell configuration.
 
 ## Acknowledgments
 
