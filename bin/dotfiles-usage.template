@@ -8,15 +8,17 @@ dotfiles supports the following commands:
         helpful in understanding the status of the setup and assist with
         debugging a damaged setup.
 
-    setup
+    setup [module]
 
         Runs through the configuration and ensures that all modules are
-        installed and configured.
+        installed and configured. Optionally, set up one module only (for
+        example: dotfiles setup zed).
 
-    update
+    update [module]
 
         Runs through the configuration and ensures that all modules are
-        up to date.
+        up to date. Optionally, update one module only (for example:
+        dotfiles update zed).
 
     align
 

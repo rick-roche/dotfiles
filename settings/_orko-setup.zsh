@@ -10,6 +10,7 @@ export CODE_DEST="$HOME/code"
 
 DOTFILES_MODULES+=(
     dev
+    zed
     azure
     cloudflare
     docker

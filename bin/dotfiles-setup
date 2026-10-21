@@ -2,13 +2,27 @@
 # shellcheck shell=bash
 
 # shellcheck source=/dev/null
-. "$(dirname $0)/_bootstrap.zsh"
+. "$(dirname "$0")/_bootstrap.zsh"
 
 export DOTFILES_VERBOSE=1
 
 dotfiles_verify_settings
 
-for module in $DOTFILES_MODULES; do
+if [[ $# -gt 1 ]]; then
+    logging_error "Usage: dotfiles setup [module]"
+fi
+
+if [[ $# -eq 1 ]]; then
+    module="$1"
+    if [[ ! -d "$DOTFILES_HOME/modules/$module" ]]; then
+        logging_error "Unknown module: $module"
+    fi
+    selected_modules=("$module")
+else
+    selected_modules=("${DOTFILES_MODULES[@]}")
+fi
+
+for module in "${selected_modules[@]}"; do
     EXEC_FILE_NAME="$DOTFILES_HOME/modules/$module/_setup.zsh"
     if [[ -x "$EXEC_FILE_NAME" ]]; then
         logging_info "Running $EXEC_FILE_NAME"
@@ -16,7 +30,7 @@ for module in $DOTFILES_MODULES; do
     elif [[ -e "$EXEC_FILE_NAME" ]]; then
         logging_status "$module: $EXEC_FILE_NAME exists but is not executable"
     else
-        module_brew_bundle $module
+        module_brew_bundle "$module"
     fi
 done
 

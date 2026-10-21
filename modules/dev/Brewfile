@@ -3,5 +3,3 @@ brew "netlify-cli"
 
 brew "copilot-cli"
 brew "opencode"
-
-cask "zed"
