@@ -17,11 +17,7 @@ ERRORS=0
 # Update these to match your repository locations
 typeset -a PROJECT_DIRS
 PROJECT_DIRS=(
-  "$HOME/Code"
-  "$HOME/Projects"
-  "$HOME/dev"
-  "$HOME/src"
-  "$HOME/repos"
+  "$HOME/code"
 )
 
 usage() {
