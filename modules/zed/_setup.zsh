@@ -3,7 +3,7 @@
 
 # shellcheck source=/dev/null
 . "$DOTFILES_HOME/bin/_bootstrap.zsh"
-DIR=$(dirname "$0")
+DIR=${DOTFILES_MODULE_DIR:-${0:A:h}}
 
 module_brew_bundle zed
 

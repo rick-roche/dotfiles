@@ -26,7 +26,9 @@ for module in "${selected_modules[@]}"; do
     EXEC_FILE_NAME="$DOTFILES_HOME/modules/$module/_setup.zsh"
     if [[ -x "$EXEC_FILE_NAME" ]]; then
         logging_info "Running $EXEC_FILE_NAME"
+        export DOTFILES_MODULE_DIR="$DOTFILES_HOME/modules/$module"
         source "$EXEC_FILE_NAME"
+        unset DOTFILES_MODULE_DIR
     elif [[ -e "$EXEC_FILE_NAME" ]]; then
         logging_status "$module: $EXEC_FILE_NAME exists but is not executable"
     else
