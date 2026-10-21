@@ -1,0 +1,30 @@
+#!/bin/zsh
+# shellcheck shell=bash
+
+set -e
+
+DOTFILES_HOME=${0:A:h:h}
+cd "$DOTFILES_HOME"
+
+command -v shellcheck >/dev/null || { print -u2 "lint: shellcheck is required"; exit 1; }
+command -v shfmt >/dev/null || { print -u2 "lint: shfmt is required"; exit 1; }
+command -v markdownlint-cli2 >/dev/null || { print -u2 "lint: markdownlint-cli2 is required"; exit 1; }
+command -v prettier >/dev/null || { print -u2 "lint: prettier is required"; exit 1; }
+command -v actionlint >/dev/null || { print -u2 "lint: actionlint is required"; exit 1; }
+
+shell_files() {
+    find bin modules settings tests -type f \( -name '*.sh' -o -name '*.bash' -o -name '*.dash' -o -name '*.ksh' -o -name '*.zsh' \) -print0
+}
+
+print "Checking shell scripts..."
+shell_files | xargs -0 shellcheck --shell=bash --external-sources
+shell_files | xargs -0 shfmt -d -i 4
+
+print "Checking Markdown..."
+markdownlint-cli2
+
+print "Checking JSON and YAML formatting..."
+prettier --check '**/*.json' '**/*.yml' '**/*.yaml' --ignore-unknown
+
+print "Checking GitHub Actions workflows..."
+actionlint

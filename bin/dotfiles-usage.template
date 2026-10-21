@@ -34,6 +34,10 @@ dotfiles supports the following commands:
         useful in ensuring that packages installed through dotfiles but not
         needed are removed in a predictable way.
 
+    lint
+
+        Runs ShellCheck, shfmt, markdownlint-cli2, Prettier, and actionlint.
+
     reset
 
         Indiscriminately remove all formulae and casks followed irrespective of

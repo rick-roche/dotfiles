@@ -25,6 +25,10 @@ case "$COMMAND" in
     shift
     exec "$(dirname $0)/dotfiles-info" "$@"
     ;;
+"lint")
+    shift
+    exec "$(dirname $0)/dotfiles-lint" "$@"
+    ;;
 "setup")
     shift
     exec "$(dirname $0)/dotfiles-setup" "$@"

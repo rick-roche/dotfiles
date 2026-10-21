@@ -56,6 +56,14 @@ The dotfiles setup adds the `dotfiles` command to your path. Usage for the comma
 - `dotfiles setup` - Use this to setup a new machine
 - `dotfiles update` - Use this to update all your modules
 
+## Linting
+
+Install the lint tools from `modules/base-cli/Brewfile`, then run `dotfiles lint`.
+The checks cover shell scripts (ShellCheck and shfmt), Markdown
+(markdownlint-cli2), JSON/YAML formatting (Prettier), and GitHub Actions
+workflows (actionlint). The GitHub Actions workflow runs the same checks on
+pull requests and pushes to `main`.
+
 ## Acknowledgments
 
 * [Your unofficial guide to dotfiles on GitHub](https://dotfiles.github.io)
