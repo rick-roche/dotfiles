@@ -2,7 +2,7 @@
 emulate -R zsh
 setopt errexit nounset pipefail
 
-repo=${0:A:h:h}
+repo=$(cd "$(dirname "$0")/.." && pwd -P)
 tmp=$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-test.XXXXXXXX")
 trap 'rm -rf -- "$tmp"' EXIT
 

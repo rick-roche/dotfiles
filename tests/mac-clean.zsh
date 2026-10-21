@@ -2,7 +2,7 @@
 emulate -R zsh
 setopt errexit nounset pipefail
 
-script=${0:A:h:h}/bin/mac-clean
+script="$(cd "$(dirname "$0")/.." && pwd -P)/bin/mac-clean"
 tmp=$(mktemp -d "${TMPDIR:-/tmp}/mac-clean-test.XXXXXXXX")
 trap 'rm -rf -- "$tmp"' EXIT
 
